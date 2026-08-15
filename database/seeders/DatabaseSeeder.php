@@ -14,6 +14,8 @@ class DatabaseSeeder extends Seeder
 
     public function run(): void
     {
+        $this->call(QuizQuestionBankDevSeeder::class);
+
         $password = config('lablearn.demo_password');
 
         if (! app()->isLocal() || ! is_string($password) || $password === '') {

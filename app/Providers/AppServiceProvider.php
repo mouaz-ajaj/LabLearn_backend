@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use App\Models\User;
+use App\Services\Quiz\CaseSpecificQuestionBuilder;
+use App\Services\Quiz\CaseSpecificQuestionProvider;
 use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Http\Request;
@@ -14,7 +16,10 @@ class AppServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-        //
+        // Phase 3B.3: real, deterministic template-driven Case-Specific generation
+        // from persisted KBS evidence. NullCaseSpecificQuestionProvider (Phase 3B.2)
+        // remains available for tests/scenarios with no Analysis at all.
+        $this->app->bind(CaseSpecificQuestionProvider::class, CaseSpecificQuestionBuilder::class);
     }
 
     public function boot(): void

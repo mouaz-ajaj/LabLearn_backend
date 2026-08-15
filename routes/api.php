@@ -1,10 +1,22 @@
 <?php
 
+use App\Http\Controllers\Api\Analysis\ShowAnalysisController;
+use App\Http\Controllers\Api\Analysis\StartAnalysisController;
 use App\Http\Controllers\Api\Auth\ForgotPasswordController;
 use App\Http\Controllers\Api\Auth\LoginController;
 use App\Http\Controllers\Api\Auth\LogoutController;
 use App\Http\Controllers\Api\Auth\RegisterController;
 use App\Http\Controllers\Api\Auth\ResetPasswordController;
+use App\Http\Controllers\Api\Job\ExtractionJobController;
+use App\Http\Controllers\Api\Quiz\ShowQuizController;
+use App\Http\Controllers\Api\Quiz\StartQuizController;
+use App\Http\Controllers\Api\Quiz\SubmitQuizAnswerController;
+use App\Http\Controllers\Api\Report\CreateReportController;
+use App\Http\Controllers\Api\Report\ExtractedResultController;
+use App\Http\Controllers\Api\Report\ProcessReportController;
+use App\Http\Controllers\Api\Report\ReportFileController;
+use App\Http\Controllers\Api\Report\ShowReportVerificationController;
+use App\Http\Controllers\Api\Report\StoreReportVerificationController;
 use App\Http\Controllers\Api\User\MeController;
 use App\Http\Controllers\Api\User\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -22,9 +34,24 @@ Route::prefix('v1')->middleware('throttle:api')->group(function (): void {
         });
     });
 
-    Route::prefix('users')->middleware('auth:sanctum')->group(function (): void {
-        Route::get('me', MeController::class);
-        Route::patch('me', [ProfileController::class, 'update']);
-        Route::delete('me', [ProfileController::class, 'destroy']);
+    Route::middleware('auth:sanctum')->group(function (): void {
+        Route::prefix('users')->group(function (): void {
+            Route::get('me', MeController::class);
+            Route::patch('me', [ProfileController::class, 'update']);
+            Route::delete('me', [ProfileController::class, 'destroy']);
+        });
+
+        Route::post('reports', CreateReportController::class);
+        Route::post('reports/{report}/files', ReportFileController::class);
+        Route::post('reports/{report}/process', ProcessReportController::class);
+        Route::get('reports/{report}/extracted-results', ExtractedResultController::class);
+        Route::post('reports/{report}/verification', StoreReportVerificationController::class);
+        Route::get('reports/{report}/verification', ShowReportVerificationController::class);
+        Route::post('reports/{report}/analyze', StartAnalysisController::class);
+        Route::get('analyses/{analysis}', ShowAnalysisController::class);
+        Route::post('reports/{report}/quiz', StartQuizController::class);
+        Route::get('quiz/{quiz}', ShowQuizController::class);
+        Route::post('quiz/{quiz}/answers', SubmitQuizAnswerController::class);
+        Route::get('jobs/{job}', ExtractionJobController::class);
     });
 });

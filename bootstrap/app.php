@@ -1,14 +1,16 @@
 <?php
 
+use App\Exceptions\ApiException;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
+use Illuminate\Http\Exceptions\ThrottleRequestsException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Http\Exceptions\ThrottleRequestsException;
 use Illuminate\Validation\ValidationException;
+use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 return Application::configure(basePath: dirname(__DIR__))
@@ -27,6 +29,19 @@ return Application::configure(basePath: dirname(__DIR__))
         $exceptions->shouldRenderJsonWhen(
             fn (Request $request, Throwable $exception): bool => $request->is('api/*') || $request->expectsJson(),
         );
+
+        $exceptions->render(function (ApiException $exception, Request $request): ?JsonResponse {
+            if (! $request->is('api/*')) {
+                return null;
+            }
+
+            return response()->json([
+                'success' => false,
+                'message' => $exception->getMessage(),
+                'error_code' => $exception->errorCode,
+                ...($exception->errors === [] ? [] : ['errors' => $exception->errors]),
+            ], $exception->status);
+        });
 
         $exceptions->render(function (ValidationException $exception, Request $request): ?JsonResponse {
             if (! $request->is('api/*')) {
@@ -54,6 +69,18 @@ return Application::configure(basePath: dirname(__DIR__))
         });
 
         $exceptions->render(function (AuthorizationException $exception, Request $request): ?JsonResponse {
+            if (! $request->is('api/*')) {
+                return null;
+            }
+
+            return response()->json([
+                'success' => false,
+                'message' => 'Forbidden.',
+                'error_code' => 'FORBIDDEN',
+            ], 403);
+        });
+
+        $exceptions->render(function (AccessDeniedHttpException $exception, Request $request): ?JsonResponse {
             if (! $request->is('api/*')) {
                 return null;
             }
