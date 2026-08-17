@@ -23,10 +23,15 @@ LabLearn is an **educational** tool. See [Medical Safety](#medical-safety).
 - [KBS Integration](#kbs-integration)
 - [Analysis Flow](#analysis-flow)
 - [Quiz Backend](#quiz-backend)
+- [Quiz History + Statistics](#quiz-history--statistics)
+- [Role-Aware AI Result Explanation](#role-aware-ai-result-explanation)
 - [General Question Bank](#general-question-bank)
 - [Question Bank Refresh Command](#question-bank-refresh-command)
 - [Case-Specific Questions](#case-specific-questions)
 - [Result Gating](#result-gating)
+- [Report History](#report-history)
+- [Report Details](#report-details)
+- [Comparison + AI Contextualization](#comparison--ai-contextualization)
 - [API Endpoints](#api-endpoints)
 - [Error Contract](#error-contract)
 - [Queues and Jobs](#queues-and-jobs)
@@ -50,7 +55,11 @@ See also: [frontend/README.md](../frontend/README.md).
 | Phase 3B.2 — Quiz backend/domain (sessions, snapshots, answers) | Implemented |
 | Phase 3B.3 — KBS Case-Specific questions + result locking + mobile integration | Implemented |
 | Phase 3B.4 — KBS-driven General Question Bank generator | Implemented |
-| Phase 4 — Report history/comparison, learning progress, AI reasoning | Not started |
+| Phase 4A — Dashboard Recent Reports + paginated Report History listing | Implemented |
+| Phase 4B — Historical Report Details (verified values + stored KBS result) | Implemented |
+| Phase 4C — Multi-report Comparison + AI contextualization | Implemented |
+| Phase 4D — Student Quiz History + real Dashboard quiz statistics | Implemented |
+| Phase 4E — Role-aware AI result explanation | Implemented |
 
 ## Backend Technology Stack
 
@@ -179,7 +188,27 @@ QUIZ_REFRESH_GENERAL_BANK_ON_START=false # dev launcher sets this to true, see b
 QUIZ_REQUIRE_APPROVED_GENERAL_QUESTIONS=false
 QUIZ_PREFERRED_GENERAL_COUNT=14
 QUIZ_PREFERRED_CASE_SPECIFIC_COUNT=6
+
+# Gemini AI Contextualization for report comparison (Phase 4C) — optional; safe with no key
+AI_COMPARISON_CONTEXT_ENABLED=true
+GEMINI_SERVICE_BASE_URL=https://generativelanguage.googleapis.com
+GEMINI_MODEL=gemini-3.7-flash
+GEMINI_API_KEY=                          # empty = deterministic fallback only, comparisons still work
+GEMINI_SERVICE_TIMEOUT_SECONDS=20
+GEMINI_SERVICE_CONNECT_TIMEOUT_SECONDS=5
+GEMINI_SERVICE_RETRY_ATTEMPTS=2
+GEMINI_MAX_OUTPUT_TOKENS=2048
+
+# Phase 4E - role-aware result explanation (separate feature gate; also requires
+# AI_COMPARISON_CONTEXT_ENABLED=true and a real GEMINI_API_KEY above)
+AI_RESULT_EXPLANATION_ENABLED=true
+RESULT_EXPLANATION_PROMPT_VERSION=v3
 ```
+
+Never commit a real `GEMINI_API_KEY`. See
+[docs/phase-4c-comparison.md](docs/phase-4c-comparison.md) and
+[docs/phase-4e-result-explanation.md](docs/phase-4e-result-explanation.md) for the full configuration,
+safety, and fallback contract.
 
 `start-lablearn.ps1` auto-generates random `OCR_SERVICE_API_KEY` / `KBS_SERVICE_API_KEY`
 values into `backend/.env` on first run if they are blank — never commit real values for
@@ -513,6 +542,268 @@ Analysis.flow == direct-result
 The lock is enforced server-side, in `ShowAnalysisController`, on the only read path for
 an analysis — it is not a client-side-only restriction.
 
+## Quiz History + Statistics
+
+`GET /students/me/quiz-history` (Phase 4D) is Student-only (`403 QUIZ_STUDENT_ONLY`,
+same convention `StartQuizSession` already uses) and reads exclusively from the
+already-persisted `quiz_sessions`/`quiz_question_snapshots`/`student_answers` tables —
+no new table, no migration. Only `status = COMPLETED` sessions count; `PREPARING`/
+`READY`/`IN_PROGRESS`/`FAILED` sessions are excluded from both the paginated list and
+the statistics.
+
+```text
+GET /students/me/quiz-history?page=&per_page=&test_category=
+-> { data: { summary: {completed_quizzes, correct_answers, total_questions, overall_percentage},
+             items: [{id, report_id, test_category, status, completed_at, started_at,
+                      score, total, percentage, general_count, case_specific_count}],
+             pagination: {current_page, per_page, total, last_page, has_more} } }
+```
+
+`summary.overall_percentage` is a **weighted** figure —
+`round(SUM(score) / SUM(actual_total) * 100, 1)` across every completed session,
+computed by one SQL aggregate query — never an average of each quiz's own percentage
+(a 15-question quiz and a 20-question quiz are not weighted equally in a simple
+average). It is `null`, never `0`, when the student has completed zero quizzes.
+`summary` always reflects **all** completed quizzes regardless of the `test_category`
+filter applied to `items` — the filter only narrows the list.
+
+Full question/answer review for one completed quiz **reuses the existing**
+`GET /quiz/{quiz}` endpoint (`ShowQuizController`/`QuizSessionResource`) completely
+unchanged — it already safely returns every snapshot's question/options in their
+original order plus, once answered, the student's answer, the correct answer,
+correctness, and explanation. No second detail endpoint was created. `content_version`
+bumps or `active=false` changes to a `Question` row, or a full
+`quiz:refresh-general-bank` run, never alter an already-built `QuizQuestionSnapshot`.
+
+Full design rationale, the exact score/weighting semantics, and live-verification
+results: [docs/phase-4d-quiz-history.md](docs/phase-4d-quiz-history.md).
+
+## Role-Aware AI Result Explanation
+
+`POST /analyses/{analysis}/explanation` (Phase 4E) adds an optional, role-aware AI
+explanation layer on top of an already-succeeded deterministic `Analysis` — Gemini
+never computes a medical fact; it only organizes and explains conclusions KBS already
+produced, drawing exclusively on a deterministic, source-grounded **Approved Medical
+Context Catalog** (`backend/resources/medical_context/*.json`, reviewed
+causes/symptoms/next-steps/red-flags/differential content keyed by conclusion code),
+at a depth matched to the requesting user's role: `regular` gets a synthesized
+plain-language picture (possible causes, possible symptoms, general next steps, red
+flags), `student` additionally gets pathophysiology, differential considerations, and
+distinguishing information. Every cause/symptom/next-step/red-flag/differential item
+Gemini outputs must reference a `context_code` actually supplied for that specific
+analysis — Gemini organizes and connects catalog content into a coherent narrative but
+never invents a new one. Reuses Phase 4C's `GeminiClient` and shared
+`config('ai.gemini.*')` connectivity settings unchanged; everything task-specific
+(prompt, context builder, response validator, fallback formatter) is a parallel,
+independent set of classes — not a second, unrelated Gemini integration and not a
+forced reuse of Comparison's classes either.
+
+```text
+Gate::authorize('view', $analysis)          # same AnalysisPolicy as GET /analyses/{analysis}
+Analysis::isPendingQuizCompletion()          # same Phase 3B.3 Result Lock, reused as-is
+analysis.status === SUCCEEDED                # else 409 EXPLANATION_NOT_AVAILABLE
+role = auth user's role (student|regular)    # never accepted from the client
+check ai_explanations cache (analysis_id, task_type, language, role, prompt_version, schema_version)
+  hit  -> return cached content immediately, Gemini never called
+  miss -> GeminiClient::generate(...) -> ResultExplanationResponseValidator
+            valid   -> persist to ai_explanations -> return AVAILABLE
+            invalid/any failure -> ResultExplanationFallbackFormatter -> return FALLBACK (never persisted)
+```
+
+A versioned cache table (`ai_explanations`, keyed by `analysis_id` + `task_type` +
+`language` + `role` + `prompt_version` + `schema_version`, entirely separate from the
+deterministic `analyses`/`analysis_conclusions`/`rule_traces` tables) means the same
+explanation is never regenerated on every screen open — a cache hit returns instantly
+with no Gemini call. `task_type` keeps this table safely reusable by any future AI
+presentation feature without mixing data; only `RESULT_EXPLANATION` exists today.
+A fallback explanation is **never** persisted as though it were successful Gemini
+output, so the next request always gets a fresh chance at a real Gemini response
+rather than being stuck showing a stale fallback.
+
+The same historical Report Details endpoint (Phase 4B, `GET /reports/{report}`)
+already exposes `analysis.id`, so the frontend requests an explanation for a
+historical analysis exactly the same way it does for a live one — no separate
+historical-explanation endpoint exists, and the cache is keyed to the specific
+`analysis_id`, so a historical explanation is never generated for the wrong verified
+version.
+
+Full architecture, exact Gemini payload/schema/validator/fallback, cache design,
+privacy contract, and live-verification results:
+[docs/phase-4e-result-explanation.md](docs/phase-4e-result-explanation.md).
+
+## Report History
+
+`GET /reports` (Phase 4A) lists the authenticated user's own reports for the mobile
+Dashboard "Recent Reports" preview and the full Report History screen. It is a
+read-only query over the existing `reports` table — there is no separate history
+table, and the endpoint never triggers OCR, KBS analysis, or quiz preparation.
+
+```text
+Report::query()->where('user_id', $request->user()->getKey())
+    ->when($testCategory, ...)->when($status, ...)
+    ->orderByDesc('created_at')
+    ->paginate($perPage)
+```
+
+- **Ownership**: scoped directly by `auth()->user()->getKey()` — there is no
+  request-supplied `user_id`, so a user can never enumerate another user's reports.
+  `ReportPolicy` has no `viewAny` (list scoping is inherent to the query), only the
+  pre-existing `view`/`update` single-report checks used elsewhere.
+- **Sorting**: `created_at` descending (newest first) — fixed, not configurable.
+- **Pagination**: `per_page` (default 10, max 50) and `page` query parameters, backed by
+  Laravel's `LengthAwarePaginator`.
+- **Filters**: `test_category` (`CBC`/`DIABETES`/`LIVER_FUNCTION`) and `status` (any
+  `ReportStatus` value), both validated against the real enums — an unknown value is a
+  422 `VALIDATION_ERROR`, never silently ignored.
+- **Response fields** (`ReportHistoryResource`): `id`, `test_category`, `source_type`,
+  `status`, `report_date`, `created_at`, `updated_at`. Deliberately excludes OCR rows,
+  verified values, KBS conclusions/rule traces, and report files — those remain scoped
+  to their existing single-report endpoints and to the future Phase 4B report-details
+  endpoint.
+- **Performance**: the existing `[user_id, created_at]` and `[user_id, status]`
+  composite indexes on `reports` (added in Phase 2) already cover this query shape, so
+  no new migration or index was needed. The endpoint does not eager-load `analyses` or
+  `quizSessions` — an "is a result available" / "quiz summary" field was considered and
+  intentionally omitted because it cannot be computed per row without either an N+1
+  query or replicating `Analysis::isPendingQuizCompletion()`'s quiz-lock logic outside
+  its owning service; the plain `status` field is returned instead.
+
+Response shape:
+
+```json
+{
+  "success": true,
+  "data": {
+    "reports": [
+      { "id": 57, "test_category": "CBC", "source_type": "IMAGE", "status": "COMPLETED", "report_date": null, "created_at": "2026-08-15T10:00:00.000000Z", "updated_at": "2026-08-15T10:05:00.000000Z" }
+    ],
+    "pagination": { "current_page": 1, "per_page": 10, "total": 4, "last_page": 1, "has_more": false }
+  }
+}
+```
+
+## Report Details
+
+`GET /reports/{report}` (Phase 4B) returns one report's full historical record: its
+current verified values and the stored KBS result that belongs to that exact
+verified-result-set version, if one exists. It is **read-only** — it never reruns
+OCR or KBS, never creates or mutates a `VerifiedResultSet`/`Analysis`/`QuizSession`,
+and never dispatches a queue job. `ShowReportController` is the only place this data
+is composed; `AnalysisResource` and `ReportPolicy` are reused as-is from the live
+analysis/verification endpoints rather than duplicated.
+
+```text
+Gate::authorize('view', $report)                         # same ReportPolicy as every other report endpoint
+$verifiedResultSet = $report->verifiedResultSets()->latest('version')->first()
+$analysis = SelectHistoricalAnalysis::forVerifiedResultSet($verifiedResultSet)   # see below
+$quizSummary = QuizSession::latestCompletedForReport($report->id, $user->id)
+```
+
+- **Ownership**: `Gate::authorize('view', $report)` — the same `ReportPolicy::view()`
+  check (`$report->user_id === $user->getKey()`) used by every other report-scoped
+  endpoint. A non-owner gets **403 `FORBIDDEN`**, matching the existing project
+  convention (`ExtractedResultController`, `ShowReportVerificationController`,
+  `ShowAnalysisController`) rather than a 404 — this endpoint does not attempt a
+  different anti-enumeration behavior than the rest of the API already has. A
+  nonexistent or soft-deleted report id 404s via normal route-model binding.
+- **Version consistency (critical)**: the "current" `VerifiedResultSet` is the highest
+  `version` for the report (`latest('version')->first()`, mirroring
+  `ShowReportVerificationController`'s existing idiom). The `analysis` shown is always
+  scoped to *that exact* verified-result-set id — never picked independently — so an
+  older analysis can never be paired with a newer verification version.
+- **Which Analysis is "the" historical result** (`app/Services/Reports/SelectHistoricalAnalysis.php`):
+  a verified result set can have more than one `Analysis` row (`flow` is part of
+  `Analysis.identity_key`, so a quiz-first attempt and a direct-result attempt never
+  collide — see [Quiz Backend](#quiz-backend)). Selection priority, mirroring the same
+  "quiz-first is never a reachable Final Result until its quiz is completed" principle
+  `Analysis::isPendingQuizCompletion()` already enforces:
+  1. Most recently completed `SUCCEEDED` **direct-result** analysis.
+  2. Otherwise, the most recently completed `SUCCEEDED` **quiz-first** analysis whose
+     quiz has actually been completed — never a locked/pending one.
+  3. Otherwise, the most recent **failed** analysis (any flow) — shown honestly rather
+     than omitted.
+  4. Otherwise, the most recent still-queued/processing analysis.
+  5. Otherwise `null` — no analysis has ever been attempted for this version.
+- **Response composition**: `report` (scalar fields, same shape as
+  `ReportHistoryResource` plus nothing extra), `verification` (`id`, `version`,
+  `patient_age_years`, `patient_sex`, `confirmed_at`, `values[]` via the new
+  `HistoricalVerifiedResultResource` — deliberately excludes `original_confidence`,
+  `source_extracted_result_id`, and `page`, which are OCR-review internals, not part
+  of what was confirmed and analyzed), `analysis` (the **exact same**
+  `AnalysisResource` shape as `GET /analyses/{analysis}`, reused verbatim so the
+  mobile client's existing result-rendering logic works unchanged), and
+  `quiz_summary` (`status`, `score`, `total` — only when a `QuizSession` for this
+  report/user is `COMPLETED`; a single cheap indexed query via the existing
+  `QuizSession::latestCompletedForReport()` helper, not a Quiz History feature).
+- **No-side-effect guarantee**: proven by a dedicated regression test that snapshots
+  row counts across `reports`, `verified_result_sets`, `verified_results`,
+  `analyses`, `analysis_conclusions`, `rule_traces`, and `quiz_sessions`, calls the
+  endpoint, and asserts every count is unchanged and no queue job was pushed.
+- **Performance**: one query for the latest verified result set (`with('results')`),
+  at most a handful of small indexed queries for analysis selection, one eager-load
+  (`conclusions`, `ruleTraces`, `verifiedResultSet.results`) on the single selected
+  `Analysis`, and one indexed query for the quiz summary — no N+1, no loading of
+  every historical version or every quiz snapshot.
+
+Response shape:
+
+```json
+{
+  "success": true,
+  "data": {
+    "report": { "id": 60, "test_category": "CBC", "source_type": "IMAGE", "status": "COMPLETED", "report_date": null, "created_at": "...", "updated_at": "..." },
+    "verification": { "id": 37, "version": 1, "patient_age_years": 29, "patient_sex": "FEMALE", "confirmed_at": "...", "values": [ { "id": 287, "label": "HGB", "value": "9.5", "unit": "g/dL", "reference_range": "12-16", "was_added_manually": true, "was_modified": false, "display_order": 1 } ] },
+    "analysis": { "id": 28, "status": "SUCCEEDED", "flow": "direct-result", "result": { "conclusions": [ { "code": "possible_anemia_pattern", "title": { "en": "..." }, "evidence": [] } ], "rule_traces": [ { "rule_code": "...", "fired": true } ], "verified_results": [ "..." ] } },
+    "quiz_summary": null
+  }
+}
+```
+
+A report that has not been verified yet returns `verification: null, analysis: null,
+quiz_summary: null` alongside its `report.status` (e.g. `UPLOADED`/`PROCESSING`/
+`NEEDS_REVIEW`); a verified report with no analysis attempt yet returns real
+`verification` values with `analysis: null` — never a fabricated result.
+
+## Comparison + AI Contextualization
+
+`POST /comparisons` (Phase 4C) compares **2+ same-category** reports and returns a
+fully deterministic, Laravel-computed comparison (`comparison`) plus an optional
+Gemini-generated, role-aware explanation of those already-computed facts
+(`ai_context`). The two layers are strictly separated: Laravel is the only source of
+numeric truth (raw trend, reference-interval relationship, a higher-level
+**lab-change classification** distinguishing "returned to the reference range" from
+"moved toward it but is still abnormal", and deterministic KBS pattern transitions —
+`APPEARED`/`DISAPPEARED`/`PERSISTED`/`TRANSIENT` across the compared reports); Gemini
+only narrates what Laravel already decided and pre-grouped, in the requested language
+and at a depth matched to the requesting user's role (`regular` vs `student`), and
+never recalculates, diagnoses, or recommends treatment. AI is fully optional — with no
+`GEMINI_API_KEY` configured (or on any AI failure), the endpoint still returns `200`
+with a deterministic bilingual, role-aware fallback explanation in `ai_context`, and
+the `comparison` object itself is entirely unaffected either way. No `comparisons`
+table exists; every comparison is computed fresh from existing `Report`/
+`VerifiedResultSet`/`Analysis` rows and nothing is persisted or mutated.
+
+```text
+Gate::authorize('view', $report)  per report        # same ReportPolicy as every other report endpoint
+same test_category across every selected report      # else 409 COMPARISON_CATEGORY_MISMATCH, before any AI call
+every report has >=1 VerifiedResultSet                # else 409 COMPARISON_REPORT_NOT_VERIFIED
+order oldest -> newest by Report.created_at
+per report: latest VerifiedResultSet -> SelectHistoricalAnalysis (same service as Phase 4B)
+cross-report analyte matching by stable KBS analyte_id, or OCR hint fallback — never free-text label
+trend = earliest vs. latest comparable point, purely-technical 0.1% float tolerance
+reference_trend from KBS-sourced numeric bounds only — never parsed from free text
+lab_change_classification = f(earliest/latest reference status, reference_trend) — e.g. LOW->less-LOW is
+  MOVED_CLOSER_BUT_STILL_ABNORMAL, never NORMALIZED (regression-locked by dedicated tests)
+pattern_transitions = earliest-vs-latest KBS conclusion_code presence, never decided by Gemini
+GroupAnalyteChanges pre-sorts analytes into sections BEFORE Gemini ever sees them —
+  Gemini explains section membership, it never decides it
+GeminiContextualizer::contextualize(...)  -> AVAILABLE (validated) or FALLBACK (deterministic), never throws
+```
+
+Full architecture, algorithms, exact Gemini payload/schema/validator/prompt strategy,
+safety controls, configuration, and live-verification results:
+[docs/phase-4c-comparison.md](docs/phase-4c-comparison.md).
+
 ## API Endpoints
 
 All routes are under `/api/v1`, rate-limited by `throttle:api` (auth endpoints have
@@ -538,7 +829,9 @@ additional dedicated limiters).
 **Reports / OCR / Jobs**
 | Method | URI | Auth |
 |---|---|---|
+| GET | `/reports` | Bearer |
 | POST | `/reports` | Bearer |
+| GET | `/reports/{report}` | Bearer |
 | POST | `/reports/{report}/files` | Bearer |
 | POST | `/reports/{report}/process` | Bearer |
 | GET | `/reports/{report}/extracted-results` | Bearer |
@@ -555,6 +848,7 @@ additional dedicated limiters).
 |---|---|---|
 | POST | `/reports/{report}/analyze` | Bearer |
 | GET | `/analyses/{analysis}` | Bearer |
+| POST | `/analyses/{analysis}/explanation` | Bearer |
 
 **Quiz**
 | Method | URI | Auth |
@@ -562,17 +856,23 @@ additional dedicated limiters).
 | POST | `/reports/{report}/quiz` | Bearer, student only |
 | GET | `/quiz/{quiz}` | Bearer |
 | POST | `/quiz/{quiz}/answers` | Bearer |
+| GET | `/students/me/quiz-history` | Bearer, student only |
+
+**Comparison**
+| Method | URI | Auth |
+|---|---|---|
+| POST | `/comparisons` | Bearer |
 
 Full request/response bodies: [docs/phase-1-api.md](docs/phase-1-api.md),
 [docs/phase-2-ocr.md](docs/phase-2-ocr.md), [docs/phase-3-analysis.md](docs/phase-3-analysis.md),
-[docs/phase-3b-quiz.md](docs/phase-3b-quiz.md). Postman collection:
-[docs/postman/LabLearn-Phase1.postman_collection.json](docs/postman/LabLearn-Phase1.postman_collection.json).
+[docs/phase-3b-quiz.md](docs/phase-3b-quiz.md), [docs/phase-4c-comparison.md](docs/phase-4c-comparison.md),
+[docs/phase-4d-quiz-history.md](docs/phase-4d-quiz-history.md), [docs/phase-4e-result-explanation.md](docs/phase-4e-result-explanation.md).
+Postman collection: [docs/postman/LabLearn-Phase1.postman_collection.json](docs/postman/LabLearn-Phase1.postman_collection.json).
 
 ### Planned / Not Implemented
 
-A report-listing/history endpoint (`GET /reports`) does not exist yet — the frontend
-dashboard's recent-reports list is currently static mock data pending Phase 4. Report
-comparison and learning-progress endpoints are likewise not implemented.
+Nothing from the currently scoped Blueprint phases remains unimplemented as of Phase
+4E; the next phase (if any) has not been scoped yet.
 
 ## Error Contract
 
@@ -626,6 +926,7 @@ php artisan queue:work --tries=3 --timeout=240
 | `php artisan ocr:health` | Checks connectivity to the configured OCR service. |
 | `php artisan kbs:health` | Checks connectivity to the configured KBS service and prints its metadata. |
 | `php artisan quiz:refresh-general-bank [--force]` | Regenerates the KBS-driven General Question Bank (see above). |
+| `php artisan kbs:repair-localized-analysis-content [--apply]` | Localization-only backfill of Arabic title/summary/evidence-label text on historical SUCCEEDED analyses from the current KBS catalog — never a medical re-analysis. Dry-run by default. See [docs/localization-integrity-repair.md](docs/localization-integrity-repair.md). |
 
 ## Startup / Shutdown
 
@@ -669,12 +970,12 @@ cd kbs
 python -m unittest discover -s tests
 ```
 
-As of this README's last update: **192 Laravel tests passing, 1973 assertions**
-(including the `GeneralQuestionBank/` suite added for Phase 3B.4). Treat this as a
-snapshot, not a guarantee — re-run the commands above for the current state. Feature
-tests are organized by phase (`tests/Feature/Auth`, `Phase2`, `Phase3`, `Phase3B`,
-`GeneralQuestionBank`, `Seeder`, `User`); unit tests cover isolated service logic
-(`tests/Unit/Phase2`, `Phase3`).
+As of this README's last update: **223 Laravel tests passing, 2176 assertions**
+(including `Phase4A/` for Report History and `Phase4B/` for Report Details). Treat
+this as a snapshot, not a guarantee — re-run the commands above for the current
+state. Feature tests are organized by phase (`tests/Feature/Auth`, `Phase2`, `Phase3`,
+`Phase3B`, `GeneralQuestionBank`, `Phase4A`, `Phase4B`, `Seeder`, `User`); unit tests
+cover isolated service logic (`tests/Unit/Phase2`, `Phase3`).
 
 ## Security
 
@@ -700,12 +1001,58 @@ classifications with an explicit disclaimer, not medical advice. Generated Gener
 questions carry `review_status = GENERATED_PENDING_REVIEW` and must go through a real
 medical review process before being treated as clinically vetted content.
 
+## Localization Integrity
+
+When `language=ar`, every human-readable prose field (KBS conclusion
+titles/summaries, evidence/analyte labels, Phase 4C/4E AI explanations and their
+deterministic fallbacks) must contain genuine Arabic — intentional Latin-script
+medical abbreviations, units, rule/condition codes, and numeric values are not
+exceptions to police against. A prior audit found and this repair fixed a real
+bug where English prose was silently stored under an `ar` key at the KBS layer;
+see [docs/localization-integrity-repair.md](docs/localization-integrity-repair.md)
+for the root cause, the fix across KBS/Laravel/frontend, the new
+`LanguagePurityChecker` response-validation gate, and the
+`kbs:repair-localized-analysis-content` historical backfill command.
+
 ## Known Limitations / Deferred Work
 
-- Phase 4 (report history, comparison, learning-progress tracking) has not started; no
-  corresponding backend endpoints exist.
-- AI-generated medical reasoning/contextualization is out of scope and not implemented
-  anywhere in the backend or KBS.
+- Phase 4A (Dashboard Recent Reports + Report History listing), Phase 4B (Historical
+  Report Details), Phase 4C (Multi-report Comparison + AI Contextualization), Phase 4D
+  (Student Quiz History + real Dashboard quiz statistics), and Phase 4E (role-aware AI
+  result explanation) are all implemented.
+- `GET /reports/{report}`'s `quiz_summary` remains intentionally a trivial `{status,
+  score, total}` block — full question/answer review for that same quiz is available
+  via `GET /students/me/quiz-history` + `GET /quiz/{quiz}` (Phase 4D), not inline on
+  the report-details response.
+- Quiz History's `summary.overall_percentage` has no per-category variant — see
+  [docs/phase-4d-quiz-history.md](docs/phase-4d-quiz-history.md#known-limitations).
+  No Weak Topics, mastery score, or adaptive-learning model exists or was added.
+- `GET /reports` intentionally omits an "is a result available" / quiz-summary field per
+  report — computing it correctly (respecting the same quiz-completion lock as
+  `GET /analyses/{analysis}`) without an N+1 query was judged out of scope for a
+  lightweight history list; the report's own `status` is returned instead.
+- Two places in this backend generate AI text — Phase 4C's `POST /comparisons`
+  (cross-report trend explanation) and Phase 4E's
+  `POST /analyses/{analysis}/explanation` (single-result, role-aware explanation) —
+  both strictly validated, always-fallback-safe, and never a source of numeric truth,
+  diagnosis, or treatment recommendation. See
+  [docs/phase-4c-comparison.md](docs/phase-4c-comparison.md) and
+  [docs/phase-4e-result-explanation.md](docs/phase-4e-result-explanation.md). No other
+  AI-generated medical reasoning exists anywhere else in the backend or KBS.
+- No Guest AI result explanation exists — Guest cannot currently reach a real
+  succeeded `Analysis` at all (see
+  [docs/phase-4e-result-explanation.md](docs/phase-4e-result-explanation.md#guest-behavior-audited-not-invented)),
+  so there was nothing to build an explanation architecture for.
+- No `comparisons` table/history exists — every comparison is computed fresh per
+  request and nothing is persisted, so a comparison cannot currently be re-fetched by
+  id or reviewed later; this was a deliberate scope decision (see
+  [docs/phase-4c-comparison.md](docs/phase-4c-comparison.md#fixed-product-decisions)),
+  not an oversight.
+- Phase 4C's `allowed_medical_context` reuses the exact same Phase 4E Approved
+  Medical Context Catalog, scoped to only the `APPEARED`/`PERSISTED` KBS pattern
+  transitions relevant to explaining a comparison's change (a `DISAPPEARED` pattern
+  gets no medical-context lookup — see docs/phase-4c-comparison.md's 2026-08-17
+  update).
 - The 360-question General Question Bank (current snapshot) is generated content and has
   not undergone medical review; `review_status = GENERATED_PENDING_REVIEW` reflects this
   honestly.

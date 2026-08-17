@@ -1,0 +1,212 @@
+{
+  "schema_version": "1",
+  "category": "DIABETES",
+  "groups": [
+    {
+      "context_group_code": "HYPOGLYCEMIA_CONTEXT",
+      "conclusion_codes": ["possible_hypoglycemia_pattern"],
+      "review_status": "APPROVED",
+      "patient_friendly_meaning": {
+        "en": "The results show a blood glucose value below the reference range, a pattern called hypoglycemia (low blood sugar).",
+        "ar": "تُظهر النتائج قيمة سكر دم أقل من المجال المرجعي، وهو نمط يُعرف بانخفاض سكر الدم."
+      },
+      "clinical_relevance": {
+        "en": "Low blood glucose can affect how the body and brain function and, if severe, may need urgent attention.",
+        "ar": "قد يؤثر انخفاض سكر الدم في عمل الجسم والدماغ، وقد يحتاج، إذا كان شديدًا، إلى عناية عاجلة."
+      },
+      "possible_causes": [
+        { "code": "HYPOGLYCEMIA_CAUSE_MEDICATION", "label": { "en": "Diabetes medication effect", "ar": "تأثير دواء السكري" }, "description": { "en": "Insulin or certain diabetes medications can lower blood glucose too much.", "ar": "قد يخفض الإنسولين أو بعض أدوية السكري سكر الدم أكثر من اللازم." } },
+        { "code": "HYPOGLYCEMIA_CAUSE_NOT_EATING", "label": { "en": "Not eating enough or skipped meals", "ar": "عدم تناول طعام كافٍ أو تخطي الوجبات" }, "description": { "en": "Insufficient food intake relative to medication or activity.", "ar": "عدم كفاية الطعام المتناول مقارنة بالدواء أو النشاط." } },
+        { "code": "HYPOGLYCEMIA_CAUSE_EXERCISE", "label": { "en": "Heavy exercise", "ar": "نشاط بدني مكثف" }, "description": { "en": "Intense physical activity can lower blood glucose.", "ar": "قد يخفض النشاط البدني المكثف سكر الدم." } },
+        { "code": "HYPOGLYCEMIA_CAUSE_ALCOHOL", "label": { "en": "Alcohol use", "ar": "تعاطي الكحول" }, "description": { "en": "Alcohol can interfere with the body's ability to maintain blood glucose.", "ar": "قد يتداخل الكحول مع قدرة الجسم على الحفاظ على مستوى سكر الدم." } }
+      ],
+      "common_symptoms": [
+        { "code": "HYPOGLYCEMIA_SYMPTOM_SHAKINESS", "text": { "en": "Shakiness or trembling", "ar": "ارتجاف أو رعشة" } },
+        { "code": "HYPOGLYCEMIA_SYMPTOM_SWEATING", "text": { "en": "Sweating", "ar": "تعرّق" } },
+        { "code": "HYPOGLYCEMIA_SYMPTOM_HUNGER", "text": { "en": "Sudden hunger", "ar": "جوع مفاجئ" } },
+        { "code": "HYPOGLYCEMIA_SYMPTOM_DIZZINESS", "text": { "en": "Dizziness or lightheadedness", "ar": "دوخة أو دوار" } },
+        { "code": "HYPOGLYCEMIA_SYMPTOM_CONFUSION", "text": { "en": "Confusion or difficulty concentrating", "ar": "تشوش ذهني أو صعوبة في التركيز" } }
+      ],
+      "general_next_steps": [
+        { "code": "HYPOGLYCEMIA_NEXT_STEP_REPEAT", "text": { "en": "A repeat glucose measurement and clinical assessment are commonly used first steps.", "ar": "يُعد تكرار قياس سكر الدم والتقييم السريري من الخطوات الأولى الشائعة." } },
+        { "code": "HYPOGLYCEMIA_NEXT_STEP_MEDICATION_REVIEW", "text": { "en": "If taking diabetes medication, a medication review with a healthcare professional is often useful.", "ar": "عند تناول دواء للسكري، غالبًا ما يفيد مراجعة الأدوية مع مختص طبي." } }
+      ],
+      "red_flags": [
+        { "code": "HYPOGLYCEMIA_RED_FLAG_URGENT_SYMPTOMS", "text": { "en": "Confusion, fainting, seizure, or inability to eat or drink can be urgent and generally warrant immediate medical attention.", "ar": "قد يكون التشوش الذهني أو الإغماء أو التشنج أو عدم القدرة على الأكل أو الشرب حالة عاجلة، وتستدعي عادةً عناية طبية فورية." } }
+      ],
+      "student_context": {
+        "pathophysiology": {
+          "en": "Blood glucose reflects a balance between intake/hepatic glucose production and utilization/medication effect; hypoglycemia occurs when this balance shifts too far toward utilization or insufficient supply.",
+          "ar": "يعكس سكر الدم توازنًا بين تناول الغلوكوز/إنتاجه الكبدي واستخدامه/تأثير الأدوية؛ ويحدث انخفاض سكر الدم عندما يميل هذا التوازن كثيرًا نحو الاستخدام أو نقص الإمداد."
+        },
+        "differential_considerations": [
+          { "code": "HYPOGLYCEMIA_DDX_MEDICATION", "text": { "en": "Insulin/medication effect in a person with diabetes", "ar": "تأثير الإنسولين/الدواء لدى شخص مصاب بالسكري" } },
+          { "code": "HYPOGLYCEMIA_DDX_INTAKE_ACTIVITY_MISMATCH", "text": { "en": "Mismatch between food intake, medication timing, and activity level", "ar": "عدم تطابق بين تناول الطعام وتوقيت الدواء ومستوى النشاط" } },
+          { "code": "HYPOGLYCEMIA_DDX_ALCOHOL", "text": { "en": "Alcohol-related", "ar": "مرتبط بالكحول" } }
+        ],
+        "distinguishing_information": [
+          { "code": "HYPOGLYCEMIA_DISTINGUISH_TIMING", "text": { "en": "Timing relative to meals, medication doses, and activity helps identify the trigger.", "ar": "يساعد التوقيت بالنسبة للوجبات وجرعات الدواء والنشاط في تحديد المحفز." } },
+          { "code": "HYPOGLYCEMIA_DISTINGUISH_MEDICATION_REGIMEN", "text": { "en": "Reviewing the full medication regimen and dosing is a key step in a person with diabetes.", "ar": "تُعد مراجعة النظام الدوائي الكامل والجرعات خطوة أساسية لدى الشخص المصاب بالسكري." } }
+        ],
+        "learning_points": [
+          { "code": "HYPOGLYCEMIA_LEARNING_CLINICAL_CONTEXT", "text": { "en": "A glucose result below 70 mg/dL is interpreted together with symptoms, medications, and clinical context rather than in isolation.", "ar": "تُفسَّر نتيجة الغلوكوز الأقل من 70 mg/dL إلى جانب الأعراض والأدوية والسياق السريري، وليس بمعزل عنها." } }
+        ]
+      },
+      "sources": [
+        { "source_id": "SRC_CDC_HYPOGLYCEMIA_2024", "organization": "Centers for Disease Control and Prevention", "title": "Low Blood Sugar (Hypoglycemia)", "url": "https://www.cdc.gov/diabetes/about/low-blood-sugar-hypoglycemia.html" }
+      ]
+    },
+    {
+      "context_group_code": "PREDIABETES_CONTEXT",
+      "conclusion_codes": ["possible_prediabetes_pattern"],
+      "review_status": "APPROVED",
+      "patient_friendly_meaning": {
+        "en": "The results show a glucose-related value above the normal range but below the common diabetes threshold, a pattern called prediabetes.",
+        "ar": "تُظهر النتائج قيمة مرتبطة بسكر الدم أعلى من المجال الطبيعي وأقل من عتبة السكري الشائعة، وهو نمط يُعرف بمقدمات السكري."
+      },
+      "clinical_relevance": {
+        "en": "Prediabetes means blood glucose is higher than normal but not yet in the diabetes range; it is an educational signal, not a confirmed diagnosis, and generally needs confirmation and clinical context.",
+        "ar": "تعني مقدمات السكري أن سكر الدم أعلى من الطبيعي لكنه لم يصل بعد إلى مجال السكري؛ وهي إشارة تعليمية وليست تشخيصًا مؤكدًا، وتحتاج عمومًا إلى تأكيد وسياق سريري."
+      },
+      "possible_causes": [
+        { "code": "PREDIABETES_CAUSE_INSULIN_RESISTANCE", "label": { "en": "Insulin resistance", "ar": "مقاومة الإنسولين" }, "description": { "en": "The body's cells respond less effectively to insulin.", "ar": "تستجيب خلايا الجسم بفعالية أقل للإنسولين." } },
+        { "code": "PREDIABETES_CAUSE_LIFESTYLE", "label": { "en": "Lifestyle factors", "ar": "عوامل نمط الحياة" }, "description": { "en": "Diet and physical activity patterns can contribute.", "ar": "قد تسهم أنماط الغذاء والنشاط البدني في ذلك." } },
+        { "code": "PREDIABETES_CAUSE_FAMILY_HISTORY", "label": { "en": "Family history", "ar": "التاريخ العائلي" }, "description": { "en": "A family history of diabetes increases risk.", "ar": "يزيد التاريخ العائلي للسكري من الخطورة." } },
+        { "code": "PREDIABETES_CAUSE_OVERWEIGHT", "label": { "en": "Overweight or obesity", "ar": "زيادة الوزن أو السمنة" }, "description": { "en": "Excess weight is a recognized risk factor.", "ar": "تُعد زيادة الوزن عامل خطورة معروفًا." } }
+      ],
+      "common_symptoms": [
+        { "code": "PREDIABETES_SYMPTOM_OFTEN_NONE", "text": { "en": "Often causes no noticeable symptoms.", "ar": "غالبًا لا تسبب أعراضًا ملحوظة." } }
+      ],
+      "general_next_steps": [
+        { "code": "PREDIABETES_NEXT_STEP_CONFIRM", "text": { "en": "Confirming the result with a healthcare professional, sometimes with repeat fasting glucose, HbA1c, or an OGTT if clinically indicated, is a common next step.", "ar": "يُعد تأكيد النتيجة مع مختص طبي، أحيانًا بتكرار الغلوكوز الصائم أو HbA1c أو اختبار تحمل الغلوكوز عند الحاجة السريرية، خطوة تالية شائعة." } },
+        { "code": "PREDIABETES_NEXT_STEP_LIFESTYLE", "text": { "en": "Discussing lifestyle factors such as diet and physical activity with a healthcare professional may help.", "ar": "قد يفيد مناقشة عوامل نمط الحياة مثل الغذاء والنشاط البدني مع مختص طبي." } }
+      ],
+      "red_flags": [],
+      "student_context": {
+        "pathophysiology": {
+          "en": "Prediabetes reflects early insulin resistance and/or reduced insulin secretion sufficient to raise glucose above normal but not yet to the diabetes threshold.",
+          "ar": "تعكس مقدمات السكري مقاومة إنسولين مبكرة و/أو انخفاض إفراز الإنسولين بما يكفي لرفع الغلوكوز فوق الطبيعي دون الوصول إلى عتبة السكري."
+        },
+        "differential_considerations": [
+          { "code": "PREDIABETES_DDX_ISOLATED_IFG", "text": { "en": "Isolated impaired fasting glucose", "ar": "خلل معزول في الغلوكوز الصائم" } },
+          { "code": "PREDIABETES_DDX_ISOLATED_A1C", "text": { "en": "Isolated elevated HbA1c in the prediabetes range", "ar": "ارتفاع معزول لـHbA1c ضمن مجال ما قبل السكري" } },
+          { "code": "PREDIABETES_DDX_CONCORDANT", "text": { "en": "Concordant fasting glucose and HbA1c in the prediabetes range, which increases pattern consistency", "ar": "تطابق الغلوكوز الصائم وHbA1c ضمن مجال ما قبل السكري، مما يزيد اتساق النمط" } }
+        ],
+        "distinguishing_information": [
+          { "code": "PREDIABETES_DISTINGUISH_REPEAT_TESTING", "text": { "en": "Repeat testing and, when needed, an OGTT help confirm the pattern.", "ar": "يساعد تكرار الفحص، وعند الحاجة اختبار تحمل الغلوكوز، في تأكيد النمط." } },
+          { "code": "PREDIABETES_DISTINGUISH_A1C_LIMITATIONS", "text": { "en": "HbA1c can be affected by certain blood disorders, which should be considered when interpreting a discordant result.", "ar": "قد يتأثر HbA1c ببعض اضطرابات الدم، وهو ما ينبغي مراعاته عند تفسير نتيجة متعارضة." } }
+        ],
+        "learning_points": [
+          { "code": "PREDIABETES_LEARNING_NOT_DIAGNOSIS", "text": { "en": "This is an educational pattern based on CDC-referenced testing categories, not a confirmed clinical diagnosis.", "ar": "هذا نمط تعليمي مبني على فئات فحص مرجعية من CDC، وليس تشخيصًا سريريًا مؤكدًا." } }
+        ]
+      },
+      "sources": [
+        { "source_id": "SRC_CDC_DIABETES_TESTING_2024", "organization": "Centers for Disease Control and Prevention", "title": "Diabetes Testing", "url": "https://www.cdc.gov/diabetes/diabetes-testing/index.html" },
+        { "source_id": "SRC_CDC_A1C_2024", "organization": "Centers for Disease Control and Prevention", "title": "A1C Test for Diabetes and Prediabetes", "url": "https://www.cdc.gov/diabetes/diabetes-testing/prediabetes-a1c-test.html" }
+      ]
+    },
+    {
+      "context_group_code": "DIABETES_PATTERN_CONTEXT",
+      "conclusion_codes": ["possible_diabetes_pattern"],
+      "review_status": "APPROVED",
+      "patient_friendly_meaning": {
+        "en": "The results show a glucose-related value at or above the common diabetes threshold, a pattern that needs clinical confirmation.",
+        "ar": "تُظهر النتائج قيمة مرتبطة بسكر الدم عند عتبة السكري الشائعة أو أعلى منها، وهو نمط يحتاج إلى تأكيد سريري."
+      },
+      "clinical_relevance": {
+        "en": "This pattern may be consistent with diabetes, but a single result creates an educational signal only and requires confirmation and clinical context, not a confirmed diagnosis.",
+        "ar": "قد يتوافق هذا النمط مع السكري، لكن نتيجة واحدة تولّد إشارة تعليمية فقط وتحتاج إلى تأكيد وسياق سريري، وليس تشخيصًا مؤكدًا."
+      },
+      "possible_causes": [
+        { "code": "DIABETES_CAUSE_TYPE_2", "label": { "en": "Type 2 diabetes", "ar": "السكري من النوع الثاني" }, "description": { "en": "The most common form, often related to insulin resistance.", "ar": "الشكل الأكثر شيوعًا، ويرتبط غالبًا بمقاومة الإنسولين." } },
+        { "code": "DIABETES_CAUSE_TYPE_1", "label": { "en": "Type 1 diabetes", "ar": "السكري من النوع الأول" }, "description": { "en": "An autoimmune condition affecting insulin production.", "ar": "حالة مناعية ذاتية تؤثر في إنتاج الإنسولين." } },
+        { "code": "DIABETES_CAUSE_MEDICATION_INDUCED", "label": { "en": "Medication-induced hyperglycemia", "ar": "ارتفاع سكر الدم بسبب الأدوية" }, "description": { "en": "Certain medications can raise blood glucose.", "ar": "قد ترفع بعض الأدوية سكر الدم." } },
+        { "code": "DIABETES_CAUSE_OTHER_ENDOCRINE", "label": { "en": "Other endocrine or metabolic causes", "ar": "أسباب صمّاوية أو استقلابية أخرى" }, "description": { "en": "Less common endocrine conditions can raise blood glucose.", "ar": "قد ترفع بعض الحالات الصمّاوية الأقل شيوعًا سكر الدم." } }
+      ],
+      "common_symptoms": [
+        { "code": "DIABETES_SYMPTOM_URINATION", "text": { "en": "Increased urination", "ar": "زيادة التبول" } },
+        { "code": "DIABETES_SYMPTOM_THIRST", "text": { "en": "Increased thirst", "ar": "زيادة الشعور بالعطش" } },
+        { "code": "DIABETES_SYMPTOM_HUNGER", "text": { "en": "Increased hunger, even after eating", "ar": "زيادة الشعور بالجوع حتى بعد تناول الطعام" } },
+        { "code": "DIABETES_SYMPTOM_FATIGUE", "text": { "en": "Fatigue", "ar": "تعب" } },
+        { "code": "DIABETES_SYMPTOM_BLURRED_VISION", "text": { "en": "Blurred vision", "ar": "تشوش الرؤية" } },
+        { "code": "DIABETES_SYMPTOM_SLOW_HEALING", "text": { "en": "Sores or wounds that heal slowly", "ar": "جروح تلتئم ببطء" } }
+      ],
+      "general_next_steps": [
+        { "code": "DIABETES_NEXT_STEP_CONFIRM", "text": { "en": "Discuss any symptoms with a healthcare professional and confirm this result, commonly with repeat testing, HbA1c, or fasting glucose.", "ar": "مناقشة أي أعراض مع مختص طبي وتأكيد هذه النتيجة، غالبًا بتكرار الفحص أو HbA1c أو الغلوكوز الصائم." } },
+        { "code": "DIABETES_NEXT_STEP_MANAGEMENT", "text": { "en": "If confirmed, a healthcare professional can guide appropriate management.", "ar": "عند التأكيد، يمكن لمختص طبي توجيه الإدارة المناسبة." } }
+      ],
+      "red_flags": [
+        { "code": "DIABETES_RED_FLAG_SEVERE_SYMPTOMS", "text": { "en": "Very high glucose together with severe symptoms (such as vomiting, confusion, or rapid breathing) can be urgent and generally warrants prompt medical attention.", "ar": "قد يكون ارتفاع سكر الدم الشديد المصحوب بأعراض حادة (مثل التقيؤ أو التشوش الذهني أو سرعة التنفس) حالة عاجلة، وتستدعي عادةً عناية طبية سريعة." } }
+      ],
+      "student_context": {
+        "pathophysiology": {
+          "en": "Sustained hyperglycemia reflects insufficient insulin action, whether from reduced secretion, resistance, or both, and is confirmed through recognized CDC-referenced testing categories rather than a single value.",
+          "ar": "يعكس ارتفاع سكر الدم المستمر عدم كفاية فعل الإنسولين، سواء بسبب انخفاض إفرازه أو مقاومته أو كليهما، ويُؤكَّد عبر فئات فحص معترف بها من CDC وليس بقيمة واحدة."
+        },
+        "differential_considerations": [
+          { "code": "DIABETES_DDX_TYPE_2", "text": { "en": "Type 2 diabetes", "ar": "السكري من النوع الثاني" } },
+          { "code": "DIABETES_DDX_TYPE_1", "text": { "en": "Type 1 diabetes", "ar": "السكري من النوع الأول" } },
+          { "code": "DIABETES_DDX_MEDICATION", "text": { "en": "Medication-induced hyperglycemia", "ar": "ارتفاع سكر الدم بسبب الأدوية" } },
+          { "code": "DIABETES_DDX_OTHER_ENDOCRINE", "text": { "en": "Other endocrine/metabolic causes", "ar": "أسباب صمّاوية/استقلابية أخرى" } }
+        ],
+        "distinguishing_information": [
+          { "code": "DIABETES_DISTINGUISH_CONCORDANCE", "text": { "en": "Concordant fasting glucose and HbA1c results increase confidence in the pattern; discordant results call for confirmation rather than assuming one value is wrong.", "ar": "يزيد تطابق نتيجتي الغلوكوز الصائم وHbA1c من الثقة بالنمط؛ أما النتائج المتعارضة فتستدعي التأكيد بدل افتراض خطأ إحدى القيمتين." } },
+          { "code": "DIABETES_DISTINGUISH_CLINICAL_CONTEXT", "text": { "en": "Clinical context, symptom onset, and age of presentation help distinguish type 1 from type 2.", "ar": "يساعد السياق السريري وبداية الأعراض وعمر الظهور في التمييز بين النوع الأول والثاني." } }
+        ],
+        "learning_points": [
+          { "code": "DIABETES_LEARNING_ONE_RESULT", "text": { "en": "A single CDC-range result creates an educational signal only and requires confirmation and clinical context before being treated as diagnostic.", "ar": "تولّد نتيجة واحدة ضمن مجال CDC إشارة تعليمية فقط، وتحتاج إلى تأكيد وسياق سريري قبل التعامل معها كتشخيص." } }
+        ]
+      },
+      "sources": [
+        { "source_id": "SRC_CDC_DIABETES_TESTING_2024", "organization": "Centers for Disease Control and Prevention", "title": "Diabetes Testing", "url": "https://www.cdc.gov/diabetes/diabetes-testing/index.html" },
+        { "source_id": "SRC_NIDDK_DIABETES_SYMPTOMS", "organization": "National Institute of Diabetes and Digestive and Kidney Diseases", "title": "Symptoms & Causes of Diabetes", "url": "https://www.niddk.nih.gov/health-information/diabetes/overview/symptoms-causes" }
+      ]
+    },
+    {
+      "context_group_code": "DISCORDANT_GLUCOSE_CONTEXT",
+      "conclusion_codes": ["possible_discordant_glucose_results"],
+      "review_status": "APPROVED",
+      "patient_friendly_meaning": {
+        "en": "The results show that different glucose-related tests do not point to the same pattern, which is called a discordant result.",
+        "ar": "تُظهر النتائج أن الفحوصات المختلفة المرتبطة بسكر الدم لا تشير إلى النمط نفسه، وهو ما يُعرف بنتيجة متعارضة."
+      },
+      "clinical_relevance": {
+        "en": "When glucose-related tests disagree, this generally needs confirmation and a review of testing conditions rather than relying on a single result.",
+        "ar": "عند تعارض الفحوصات المرتبطة بسكر الدم، يحتاج ذلك عمومًا إلى تأكيد ومراجعة ظروف الفحص بدل الاعتماد على نتيجة واحدة."
+      },
+      "possible_causes": [
+        { "code": "DISCORDANT_CAUSE_RECENT_DIET", "label": { "en": "Recent diet or illness", "ar": "نظام غذائي حديث أو مرض حديث" }, "description": { "en": "Recent changes in diet or an acute illness can temporarily affect one test more than another.", "ar": "قد تؤثر التغيرات الحديثة في الغذاء أو المرض الحاد في أحد الفحصين أكثر من الآخر بشكل مؤقت." } },
+        { "code": "DISCORDANT_CAUSE_LAB_VARIATION", "label": { "en": "Laboratory variation", "ar": "تفاوت مخبري" }, "description": { "en": "Different tests can naturally vary somewhat between laboratories or over time.", "ar": "قد تتفاوت الفحوصات المختلفة بشكل طبيعي بين المختبرات أو مع الوقت." } },
+        { "code": "DISCORDANT_CAUSE_TIMING", "label": { "en": "Timing issue", "ar": "مشكلة في التوقيت" }, "description": { "en": "Fasting status or timing relative to meals can affect results.", "ar": "قد تؤثر حالة الصيام أو التوقيت بالنسبة للوجبات في النتائج." } },
+        { "code": "DISCORDANT_CAUSE_A1C_INTERFERENCE", "label": { "en": "HbA1c affected by certain blood disorders", "ar": "تأثر HbA1c ببعض اضطرابات الدم" }, "description": { "en": "Some blood conditions can affect HbA1c accuracy independent of glucose control.", "ar": "قد تؤثر بعض حالات الدم في دقة HbA1c بمعزل عن ضبط سكر الدم." } }
+      ],
+      "common_symptoms": [],
+      "general_next_steps": [
+        { "code": "DISCORDANT_NEXT_STEP_REPEAT", "text": { "en": "Repeat testing and clinical review are commonly recommended rather than relying on one result alone.", "ar": "يُوصى عادة بتكرار الفحص والمراجعة السريرية بدل الاعتماد على نتيجة واحدة فقط." } },
+        { "code": "DISCORDANT_NEXT_STEP_OGTT", "text": { "en": "An oral glucose tolerance test (OGTT) may be considered if clinically indicated.", "ar": "قد يُنظر في إجراء اختبار تحمل الغلوكوز الفموي عند الحاجة السريرية." } }
+      ],
+      "red_flags": [],
+      "student_context": {
+        "pathophysiology": {
+          "en": "Fasting glucose, random glucose, HbA1c, and OGTT reflect glucose regulation over different time windows and under different physiologic conditions, so they do not always move together.",
+          "ar": "يعكس كل من الغلوكوز الصائم والعشوائي وHbA1c واختبار تحمل الغلوكوز تنظيم سكر الدم عبر نوافذ زمنية وظروف فيزيولوجية مختلفة، لذا لا تتوافق نتائجها دومًا."
+        },
+        "differential_considerations": [
+          { "code": "DISCORDANT_DDX_TESTING_CONTEXT", "text": { "en": "Testing-context discordance (fasting status, timing, recent illness)", "ar": "تعارض مرتبط بسياق الفحص (حالة الصيام، التوقيت، مرض حديث)" } },
+          { "code": "DISCORDANT_DDX_A1C_RELIABILITY", "text": { "en": "A1C reliability issue related to a red-cell condition affecting hemoglobin turnover", "ar": "مشكلة موثوقية في HbA1c مرتبطة بحالة في الكريات الحمراء تؤثر في معدل تجدد الهيموغلوبين" } }
+        ],
+        "distinguishing_information": [
+          { "code": "DISCORDANT_DISTINGUISH_HEMOGLOBIN", "text": { "en": "Checking hemoglobin/red-cell indices can help evaluate whether an A1C reliability issue is contributing.", "ar": "قد يساعد فحص الهيموغلوبين ومؤشرات الكريات الحمراء في تقييم ما إذا كانت مشكلة موثوقية HbA1c مساهمة." } },
+          { "code": "DISCORDANT_DISTINGUISH_REPEAT_SAME_CONDITIONS", "text": { "en": "Repeating testing under the same, well-documented conditions helps clarify a true discordance from a testing artifact.", "ar": "يساعد تكرار الفحص تحت الظروف نفسها الموثّقة جيدًا في توضيح التعارض الحقيقي من الخطأ الفني." } }
+        ],
+        "learning_points": [
+          { "code": "DISCORDANT_LEARNING_NO_VALUE_DISCARDED", "text": { "en": "Discordant classifications call for confirmation and review of testing conditions rather than discarding either value.", "ar": "يستدعي التعارض في التصنيف تأكيدًا ومراجعة لظروف الفحص بدل إسقاط أي من القيمتين." } }
+        ]
+      },
+      "sources": [
+        { "source_id": "SRC_CDC_DIABETES_TESTING_2024", "organization": "Centers for Disease Control and Prevention", "title": "Diabetes Testing", "url": "https://www.cdc.gov/diabetes/diabetes-testing/index.html" },
+        { "source_id": "SRC_NIDDK_A1C_LIMITATIONS_2025", "organization": "National Institute of Diabetes and Digestive and Kidney Diseases", "title": "The A1C Test & Diabetes", "url": "https://www.niddk.nih.gov/health-information/diagnostic-tests/a1c-test" }
+      ]
+    }
+  ]
+}

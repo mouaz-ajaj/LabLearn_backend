@@ -2,7 +2,12 @@
 
 namespace App\Providers;
 
+use App\Contracts\AiContextualizer;
+use App\Contracts\ResultExplainer;
 use App\Models\User;
+use App\Services\Ai\GeminiContextualizer;
+use App\Services\Ai\GeminiResultExplainer;
+use App\Services\Ai\MedicalContext\ApprovedMedicalContextCatalog;
 use App\Services\Quiz\CaseSpecificQuestionBuilder;
 use App\Services\Quiz\CaseSpecificQuestionProvider;
 use Illuminate\Auth\Notifications\ResetPassword;
@@ -20,6 +25,26 @@ class AppServiceProvider extends ServiceProvider
         // from persisted KBS evidence. NullCaseSpecificQuestionProvider (Phase 3B.2)
         // remains available for tests/scenarios with no Analysis at all.
         $this->app->bind(CaseSpecificQuestionProvider::class, CaseSpecificQuestionBuilder::class);
+
+        // Phase 4C: Gemini is the only AiContextualizer implementation today, but
+        // Comparison Core depends only on this contract - swapping providers later
+        // never touches the deterministic comparison logic.
+        $this->app->bind(AiContextualizer::class, GeminiContextualizer::class);
+
+        // Phase 4E: same swap-point discipline as AiContextualizer above, for
+        // per-analysis role-aware result explanation.
+        $this->app->bind(ResultExplainer::class, GeminiResultExplainer::class);
+
+        // Phase 4E content redesign: one catalog instance per request is enough -
+        // it only reads a handful of small, reviewed JSON files - and this keeps
+        // every consumer (context builder, fallback formatter, coverage tests)
+        // reading the exact same resolved data.
+        $this->app->singleton(
+            ApprovedMedicalContextCatalog::class,
+            fn (): ApprovedMedicalContextCatalog => new ApprovedMedicalContextCatalog(
+                (string) config('ai.medical_context.catalog_path'),
+            ),
+        );
     }
 
     public function boot(): void

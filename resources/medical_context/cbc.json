@@ -1,0 +1,743 @@
+{
+  "schema_version": "1",
+  "category": "CBC",
+  "groups": [
+    {
+      "context_group_code": "GENERAL_ANEMIA_CONTEXT",
+      "conclusion_codes": ["possible_anemia_pattern"],
+      "superseded_by_group_codes": ["MICROCYTIC_HYPOCHROMIC_ANEMIA_CONTEXT", "MACROCYTIC_ANEMIA_CONTEXT", "NORMOCYTIC_ANEMIA_CONTEXT"],
+      "review_status": "APPROVED",
+      "patient_friendly_meaning": {
+        "en": "The results show one or more red-blood-cell measurements below the reference range, a pattern commonly called anemia.",
+        "ar": "تُظهر النتائج انخفاضًا في واحد أو أكثر من قياسات الكريات الحمراء، وهو نمط يُعرف عادةً باسم فقر الدم."
+      },
+      "clinical_relevance": {
+        "en": "Anemia means the blood has a reduced ability to carry oxygen, which can arise from blood loss, reduced red-cell production, or increased red-cell destruction.",
+        "ar": "يعني فقر الدم انخفاض قدرة الدم على نقل الأكسجين، وقد ينتج عن فقدان دم أو انخفاض إنتاج الكريات الحمراء أو زيادة تكسّرها."
+      },
+      "possible_causes": [
+        { "code": "ANEMIA_CAUSE_IRON_DEFICIENCY", "label": { "en": "Iron deficiency", "ar": "نقص الحديد" }, "description": { "en": "Insufficient iron to make hemoglobin, often from diet, blood loss, or pregnancy.", "ar": "نقص الحديد اللازم لتصنيع الهيموغلوبين، وغالبًا ما ينتج عن النظام الغذائي أو فقدان الدم أو الحمل." } },
+        { "code": "ANEMIA_CAUSE_BLOOD_LOSS", "label": { "en": "Blood loss", "ar": "فقدان الدم" }, "description": { "en": "Ongoing or past bleeding, including heavy menstrual periods or gastrointestinal bleeding.", "ar": "نزيف مستمر أو سابق، بما في ذلك الدورة الشهرية الغزيرة أو نزيف الجهاز الهضمي." } },
+        { "code": "ANEMIA_CAUSE_B12_FOLATE_DEFICIENCY", "label": { "en": "Vitamin B12 or folate deficiency", "ar": "نقص فيتامين B12 أو الفولات" }, "description": { "en": "Insufficient B12 or folate needed for normal red-cell production.", "ar": "نقص فيتامين B12 أو الفولات اللازمين لإنتاج طبيعي للكريات الحمراء." } },
+        { "code": "ANEMIA_CAUSE_CHRONIC_DISEASE", "label": { "en": "Chronic disease or inflammation", "ar": "مرض مزمن أو التهاب" }, "description": { "en": "Ongoing conditions such as chronic kidney disease, inflammatory disease, or cancer can reduce red-cell production.", "ar": "حالات مستمرة مثل مرض الكلى المزمن أو الأمراض الالتهابية أو السرطان قد تقلل إنتاج الكريات الحمراء." } },
+        { "code": "ANEMIA_CAUSE_BONE_MARROW_DISORDER", "label": { "en": "Bone marrow disorders", "ar": "اضطرابات نخاع العظم" }, "description": { "en": "Conditions that reduce the bone marrow's ability to produce blood cells.", "ar": "حالات تقلل من قدرة نخاع العظم على إنتاج خلايا الدم." } }
+      ],
+      "common_symptoms": [
+        { "code": "ANEMIA_SYMPTOM_FATIGUE", "text": { "en": "Fatigue and weakness", "ar": "تعب وإرهاق" } },
+        { "code": "ANEMIA_SYMPTOM_DIZZINESS", "text": { "en": "Dizziness or lightheadedness", "ar": "دوخة أو دوار" } },
+        { "code": "ANEMIA_SYMPTOM_DYSPNEA", "text": { "en": "Shortness of breath", "ar": "ضيق في التنفس" } },
+        { "code": "ANEMIA_SYMPTOM_PALLOR", "text": { "en": "Pale skin", "ar": "شحوب الجلد" } },
+        { "code": "ANEMIA_SYMPTOM_HEADACHE", "text": { "en": "Headache", "ar": "صداع" } },
+        { "code": "ANEMIA_SYMPTOM_COLD", "text": { "en": "Feeling cold", "ar": "الشعور بالبرد" } }
+      ],
+      "general_next_steps": [
+        { "code": "ANEMIA_NEXT_STEP_DISCUSS", "text": { "en": "Discuss this result with a healthcare professional.", "ar": "مناقشة هذه النتيجة مع مختص طبي." } },
+        { "code": "ANEMIA_NEXT_STEP_FULL_PICTURE", "text": { "en": "Determining the cause often requires the full blood count picture, medical history, and sometimes additional laboratory testing.", "ar": "غالبًا ما يحتاج تحديد السبب إلى الصورة الكاملة لتعداد الدم والتاريخ الطبي وأحيانًا فحوصات مخبرية إضافية." } }
+      ],
+      "red_flags": [
+        { "code": "ANEMIA_RED_FLAG_SEVERE_SYMPTOMS", "text": { "en": "Severe or rapidly worsening symptoms such as chest pain, fainting, or severe shortness of breath may warrant faster medical evaluation.", "ar": "الأعراض الشديدة أو المتفاقمة بسرعة مثل ألم الصدر أو الإغماء أو ضيق التنفس الشديد قد تستدعي تقييمًا طبيًا أسرع." } }
+      ],
+      "student_context": {
+        "pathophysiology": {
+          "en": "Anemia reflects reduced oxygen-carrying capacity of the blood, arising from one of three general mechanisms: blood loss, decreased red-cell production, or increased red-cell destruction (hemolysis).",
+          "ar": "يعكس فقر الدم انخفاض قدرة الدم على نقل الأكسجين، وينتج عن إحدى ثلاث آليات عامة: فقدان الدم، أو انخفاض إنتاج الكريات الحمراء، أو زيادة تكسّرها (الانحلال الدموي)."
+        },
+        "differential_considerations": [
+          { "code": "ANEMIA_DDX_MECHANISM_LOSS", "text": { "en": "Acute or chronic blood loss", "ar": "فقدان دم حاد أو مزمن" } },
+          { "code": "ANEMIA_DDX_MECHANISM_UNDERPRODUCTION", "text": { "en": "Reduced production (nutritional deficiency, chronic disease, marrow disorder)", "ar": "انخفاض الإنتاج (نقص غذائي، مرض مزمن، اضطراب نخاعي)" } },
+          { "code": "ANEMIA_DDX_MECHANISM_HEMOLYSIS", "text": { "en": "Increased red-cell destruction (hemolysis)", "ar": "زيادة تكسّر الكريات الحمراء (الانحلال الدموي)" } }
+        ],
+        "distinguishing_information": [
+          { "code": "ANEMIA_DISTINGUISH_MCV", "text": { "en": "MCV (mean corpuscular volume) helps classify anemia as microcytic, normocytic, or macrocytic.", "ar": "يساعد MCV (متوسط حجم الكرية) في تصنيف فقر الدم إلى صغير أو سوي أو كبير الكريات." } },
+          { "code": "ANEMIA_DISTINGUISH_RETICULOCYTE", "text": { "en": "Reticulocyte count helps distinguish reduced production from blood loss or hemolysis.", "ar": "يساعد عدّ الخلايا الشبكية في التمييز بين انخفاض الإنتاج وفقدان الدم أو الانحلال الدموي." } }
+        ],
+        "learning_points": [
+          { "code": "ANEMIA_LEARNING_CLASSIFICATION", "text": { "en": "Classifying anemia by MCV and reticulocyte response is the standard first step toward narrowing the differential.", "ar": "تصنيف فقر الدم بحسب MCV واستجابة الخلايا الشبكية هو الخطوة الأولى المعتادة لتضييق التشخيص التفريقي." } }
+        ]
+      },
+      "sources": [
+        { "source_id": "SRC_MEDLINEPLUS_CBC", "organization": "U.S. National Library of Medicine / MedlinePlus", "title": "Complete Blood Count (CBC)", "url": "https://medlineplus.gov/lab-tests/complete-blood-count-cbc/" },
+        { "source_id": "SRC_MEDLINEPLUS_ANEMIA", "organization": "U.S. National Library of Medicine / MedlinePlus", "title": "Anemia", "url": "https://medlineplus.gov/anemia.html" }
+      ]
+    },
+    {
+      "context_group_code": "MICROCYTIC_HYPOCHROMIC_ANEMIA_CONTEXT",
+      "conclusion_codes": ["microcytic_anemia_pattern", "hypochromic_red_cell_pattern", "anisocytosis_signal"],
+      "review_status": "APPROVED",
+      "patient_friendly_meaning": {
+        "en": "The results show reduced hemoglobin together with red blood cells that are smaller and contain less hemoglobin than usual, a pattern sometimes called microcytic/hypochromic anemia.",
+        "ar": "تُظهر النتائج انخفاضًا في الهيموغلوبين مع كريات دم حمراء أصغر من المعتاد وتحتوي على هيموغلوبين أقل، وهو نمط يُعرف أحيانًا بفقر الدم صغير الكريات ناقص الصباغ."
+      },
+      "clinical_relevance": {
+        "en": "A microcytic, hypochromic pattern points toward reduced hemoglobin synthesis, most commonly related to iron availability.",
+        "ar": "يشير النمط صغير الكريات ناقص الصباغ إلى انخفاض تصنيع الهيموغلوبين، ويرتبط غالبًا بتوافر الحديد."
+      },
+      "possible_causes": [
+        { "code": "MICROCYTIC_CAUSE_IRON_DEFICIENCY", "label": { "en": "Iron deficiency", "ar": "نقص الحديد" }, "description": { "en": "The most common cause of this pattern; iron is required to build hemoglobin.", "ar": "السبب الأكثر شيوعًا لهذا النمط؛ الحديد ضروري لبناء الهيموغلوبين." } },
+        { "code": "MICROCYTIC_CAUSE_THALASSEMIA_TRAIT", "label": { "en": "Thalassemia trait", "ar": "سمة الثلاسيميا" }, "description": { "en": "An inherited condition affecting hemoglobin production.", "ar": "حالة وراثية تؤثر في إنتاج الهيموغلوبين." } },
+        { "code": "MICROCYTIC_CAUSE_CHRONIC_INFLAMMATION", "label": { "en": "Chronic inflammation", "ar": "التهاب مزمن" }, "description": { "en": "Long-standing inflammatory or chronic disease can sometimes produce a similar pattern.", "ar": "قد تنتج الأمراض الالتهابية أو المزمنة طويلة الأمد نمطًا مشابهًا أحيانًا." } }
+      ],
+      "common_symptoms": [
+        { "code": "ANEMIA_SYMPTOM_FATIGUE", "text": { "en": "Fatigue and weakness", "ar": "تعب وإرهاق" } },
+        { "code": "ANEMIA_SYMPTOM_DIZZINESS", "text": { "en": "Dizziness", "ar": "دوخة" } },
+        { "code": "ANEMIA_SYMPTOM_DYSPNEA", "text": { "en": "Shortness of breath", "ar": "ضيق في التنفس" } },
+        { "code": "MICROCYTIC_SYMPTOM_BRITTLE_NAILS", "text": { "en": "Brittle nails or hair changes, more specific to longstanding iron deficiency", "ar": "هشاشة الأظافر أو تغيرات الشعر، وترتبط بشكل أكثر تحديدًا بنقص الحديد طويل الأمد" } },
+        { "code": "MICROCYTIC_SYMPTOM_PICA", "text": { "en": "Unusual cravings for non-food items (pica), sometimes seen with iron deficiency", "ar": "رغبة غير معتادة في تناول مواد غير غذائية (بيكا)، تُلاحظ أحيانًا مع نقص الحديد" } }
+      ],
+      "general_next_steps": [
+        { "code": "MICROCYTIC_NEXT_STEP_IRON_STUDIES", "text": { "en": "Iron studies (ferritin, serum iron, TIBC, transferrin saturation) are commonly needed to support or exclude iron deficiency.", "ar": "غالبًا ما تُحتاج دراسات الحديد (الفيريتين، الحديد المصلي، TIBC، تشبع الترانسفيرين) لدعم نقص الحديد أو استبعاده." } },
+        { "code": "ANEMIA_NEXT_STEP_DISCUSS", "text": { "en": "Discuss this result with a healthcare professional.", "ar": "مناقشة هذه النتيجة مع مختص طبي." } }
+      ],
+      "red_flags": [
+        { "code": "ANEMIA_RED_FLAG_SEVERE_SYMPTOMS", "text": { "en": "Severe or rapidly worsening symptoms such as chest pain, fainting, or severe shortness of breath may warrant faster medical evaluation.", "ar": "الأعراض الشديدة أو المتفاقمة بسرعة مثل ألم الصدر أو الإغماء أو ضيق التنفس الشديد قد تستدعي تقييمًا طبيًا أسرع." } }
+      ],
+      "student_context": {
+        "pathophysiology": {
+          "en": "Reduced hemoglobin synthesis or iron availability produces smaller (microcytic) and paler (hypochromic) red cells; MCH and MCHC reflect hemoglobin content per cell. Elevated RDW reflects increased anisocytosis (size variation), often seen when a new population of small cells mixes with an existing, more normally sized population, such as in evolving iron deficiency.",
+          "ar": "ينتج عن انخفاض تصنيع الهيموغلوبين أو توافر الحديد كريات أصغر (صغيرة الحجم) وأفتح لونًا (ناقصة الصباغ)؛ ويعكس MCH وMCHC محتوى الهيموغلوبين داخل الكرية. يعكس ارتفاع RDW زيادة تفاوت حجم الكريات، ويُلاحظ غالبًا عند اختلاط مجموعة جديدة من الكريات الصغيرة مع مجموعة أخرى ذات حجم أقرب للطبيعي، كما في نقص الحديد المتطور."
+        },
+        "differential_considerations": [
+          { "code": "MICROCYTIC_DDX_IRON_DEFICIENCY", "text": { "en": "Iron deficiency anemia", "ar": "فقر دم بعوز الحديد" } },
+          { "code": "MICROCYTIC_DDX_THALASSEMIA", "text": { "en": "Thalassemia trait", "ar": "سمة الثلاسيميا" } },
+          { "code": "MICROCYTIC_DDX_CHRONIC_DISEASE", "text": { "en": "Anemia of chronic disease (can occasionally be microcytic)", "ar": "فقر دم الأمراض المزمنة (قد يكون صغير الكريات أحيانًا)" } }
+        ],
+        "distinguishing_information": [
+          { "code": "MICROCYTIC_DISTINGUISH_FERRITIN", "text": { "en": "Ferritin is typically low in iron deficiency and normal or high in thalassemia trait or chronic disease.", "ar": "يكون الفيريتين منخفضًا عادةً في نقص الحديد، بينما يكون طبيعيًا أو مرتفعًا في سمة الثلاسيميا أو الأمراض المزمنة." } },
+          { "code": "MICROCYTIC_DISTINGUISH_ELECTROPHORESIS", "text": { "en": "Hemoglobin electrophoresis can help identify thalassemia trait.", "ar": "يمكن أن يساعد الرحلان الكهربائي للهيموغلوبين في تحديد سمة الثلاسيميا." } },
+          { "code": "MICROCYTIC_DISTINGUISH_INFLAMMATORY_MARKERS", "text": { "en": "Inflammatory markers support a chronic-disease pattern when iron studies are equivocal.", "ar": "تدعم مؤشرات الالتهاب نمط الأمراض المزمنة عندما تكون دراسات الحديد غير حاسمة." } }
+        ],
+        "learning_points": [
+          { "code": "MICROCYTIC_LEARNING_RDW", "text": { "en": "RDW alongside MCV/MCH/MCHC helps characterize red-cell morphology before ordering more specific testing.", "ar": "يساعد RDW إلى جانب MCV/MCH/MCHC في توصيف شكل الكريات الحمراء قبل طلب فحوصات أكثر تحديدًا." } }
+        ]
+      },
+      "sources": [
+        { "source_id": "SRC_MEDLINEPLUS_RBC_INDICES_2024", "organization": "U.S. National Library of Medicine / MedlinePlus", "title": "Red Blood Cell (RBC) Indices", "url": "https://medlineplus.gov/lab-tests/red-blood-cell-rbc-indices/" },
+        { "source_id": "SRC_MEDLINEPLUS_RDW_2024", "organization": "U.S. National Library of Medicine / MedlinePlus", "title": "RDW (Red Cell Distribution Width)", "url": "https://medlineplus.gov/lab-tests/rdw-red-cell-distribution-width/" },
+        { "source_id": "SRC_MEDLINEPLUS_IRON_DEFICIENCY_ANEMIA", "organization": "U.S. National Library of Medicine / MedlinePlus", "title": "Iron deficiency anemia", "url": "https://medlineplus.gov/ency/article/000584.htm" }
+      ]
+    },
+    {
+      "context_group_code": "NORMOCYTIC_ANEMIA_CONTEXT",
+      "conclusion_codes": ["normocytic_anemia_pattern"],
+      "review_status": "APPROVED",
+      "patient_friendly_meaning": {
+        "en": "The results show reduced hemoglobin while the average red-cell size remains within the normal range, a pattern sometimes called normocytic anemia.",
+        "ar": "تُظهر النتائج انخفاضًا في الهيموغلوبين بينما يبقى متوسط حجم الكرية الحمراء ضمن المجال الطبيعي، وهو نمط يُعرف أحيانًا بفقر الدم سوي الكريات."
+      },
+      "clinical_relevance": {
+        "en": "A normocytic pattern often points toward recent blood loss, a chronic underlying condition, or a mixed picture rather than a hemoglobin-synthesis defect.",
+        "ar": "غالبًا ما يشير النمط سوي الكريات إلى فقدان دم حديث أو حالة مزمنة كامنة أو صورة مختلطة بدل خلل في تصنيع الهيموغلوبين."
+      },
+      "possible_causes": [
+        { "code": "NORMOCYTIC_CAUSE_ACUTE_BLOOD_LOSS", "label": { "en": "Acute blood loss", "ar": "فقدان دم حاد" }, "description": { "en": "Recent bleeding that has not yet changed average red-cell size.", "ar": "نزيف حديث لم يغيّر بعد متوسط حجم الكرية الحمراء." } },
+        { "code": "ANEMIA_CAUSE_CHRONIC_DISEASE", "label": { "en": "Chronic disease", "ar": "مرض مزمن" }, "description": { "en": "Ongoing illness that reduces red-cell production without changing cell size.", "ar": "مرض مستمر يقلل إنتاج الكريات الحمراء دون تغيير حجمها." } },
+        { "code": "NORMOCYTIC_CAUSE_KIDNEY_DISEASE", "label": { "en": "Kidney disease", "ar": "مرض الكلى" }, "description": { "en": "Reduced erythropoietin production from impaired kidney function can lower red-cell production.", "ar": "قد يقلل ضعف وظيفة الكلى إنتاج هرمون الإريثروبويتين، مما يخفض إنتاج الكريات الحمراء." } },
+        { "code": "NORMOCYTIC_CAUSE_HEMOLYSIS", "label": { "en": "Hemolysis", "ar": "انحلال الدم" }, "description": { "en": "Increased destruction of red blood cells.", "ar": "زيادة تكسّر الكريات الحمراء." } },
+        { "code": "ANEMIA_CAUSE_BONE_MARROW_DISORDER", "label": { "en": "Bone marrow disorders", "ar": "اضطرابات نخاع العظم" }, "description": { "en": "Conditions that reduce the bone marrow's ability to produce blood cells.", "ar": "حالات تقلل من قدرة نخاع العظم على إنتاج خلايا الدم." } }
+      ],
+      "common_symptoms": [
+        { "code": "ANEMIA_SYMPTOM_FATIGUE", "text": { "en": "Fatigue and weakness", "ar": "تعب وإرهاق" } },
+        { "code": "ANEMIA_SYMPTOM_DIZZINESS", "text": { "en": "Dizziness", "ar": "دوخة" } },
+        { "code": "ANEMIA_SYMPTOM_DYSPNEA", "text": { "en": "Shortness of breath", "ar": "ضيق في التنفس" } },
+        { "code": "ANEMIA_SYMPTOM_PALLOR", "text": { "en": "Pale skin", "ar": "شحوب الجلد" } }
+      ],
+      "general_next_steps": [
+        { "code": "NORMOCYTIC_NEXT_STEP_RETICULOCYTE", "text": { "en": "Reticulocyte count, kidney function, and inflammatory markers are commonly used to help determine the cause.", "ar": "غالبًا ما يُستخدم عدّ الخلايا الشبكية ووظائف الكلى ومؤشرات الالتهاب للمساعدة في تحديد السبب." } },
+        { "code": "ANEMIA_NEXT_STEP_DISCUSS", "text": { "en": "Discuss this result with a healthcare professional.", "ar": "مناقشة هذه النتيجة مع مختص طبي." } }
+      ],
+      "red_flags": [
+        { "code": "ANEMIA_RED_FLAG_SEVERE_SYMPTOMS", "text": { "en": "Severe or rapidly worsening symptoms such as chest pain, fainting, or severe shortness of breath may warrant faster medical evaluation.", "ar": "الأعراض الشديدة أو المتفاقمة بسرعة مثل ألم الصدر أو الإغماء أو ضيق التنفس الشديد قد تستدعي تقييمًا طبيًا أسرع." } }
+      ],
+      "student_context": {
+        "pathophysiology": {
+          "en": "Normal-sized red cells with reduced hemoglobin suggest a process that has not altered red-cell maturation, such as recent blood loss, reduced erythropoietin drive, or a chronic disease/inflammatory state.",
+          "ar": "تشير الكريات الحمراء الطبيعية الحجم مع انخفاض الهيموغلوبين إلى عملية لم تغيّر نضج الكريات الحمراء، مثل فقدان دم حديث أو انخفاض محفّز الإريثروبويتين أو حالة مرضية/التهابية مزمنة."
+        },
+        "differential_considerations": [
+          { "code": "NORMOCYTIC_DDX_BLOOD_LOSS", "text": { "en": "Acute blood loss", "ar": "فقدان دم حاد" } },
+          { "code": "NORMOCYTIC_DDX_CHRONIC_DISEASE", "text": { "en": "Anemia of chronic disease/inflammation", "ar": "فقر دم الأمراض المزمنة/الالتهابية" } },
+          { "code": "NORMOCYTIC_DDX_RENAL", "text": { "en": "Renal disease (reduced erythropoietin)", "ar": "مرض كلوي (انخفاض الإريثروبويتين)" } },
+          { "code": "NORMOCYTIC_DDX_HEMOLYSIS", "text": { "en": "Hemolysis", "ar": "انحلال الدم" } },
+          { "code": "NORMOCYTIC_DDX_EARLY_MIXED", "text": { "en": "Early or mixed nutritional deficiency", "ar": "نقص غذائي مبكر أو مختلط" } }
+        ],
+        "distinguishing_information": [
+          { "code": "NORMOCYTIC_DISTINGUISH_RETICULOCYTE", "text": { "en": "A high reticulocyte count suggests blood loss or hemolysis with an intact marrow response; a low count suggests underproduction.", "ar": "يشير ارتفاع عدّ الخلايا الشبكية إلى فقدان دم أو انحلال دموي مع استجابة نخاعية سليمة؛ بينما يشير انخفاضه إلى نقص الإنتاج." } },
+          { "code": "NORMOCYTIC_DISTINGUISH_RENAL_FUNCTION", "text": { "en": "Kidney function tests help evaluate a renal contribution.", "ar": "تساعد فحوصات وظائف الكلى في تقييم المساهمة الكلوية." } }
+        ],
+        "learning_points": [
+          { "code": "NORMOCYTIC_LEARNING_RETIC_INDEX", "text": { "en": "The reticulocyte response is the key first branch point when evaluating a normocytic anemia.", "ar": "تُعد استجابة الخلايا الشبكية نقطة التفرع الأولى الأساسية عند تقييم فقر الدم سوي الكريات." } }
+        ]
+      },
+      "sources": [
+        { "source_id": "SRC_MEDLINEPLUS_ANEMIA", "organization": "U.S. National Library of Medicine / MedlinePlus", "title": "Anemia", "url": "https://medlineplus.gov/anemia.html" },
+        { "source_id": "SRC_MEDLINEPLUS_RETICULOCYTE_2023", "organization": "U.S. National Library of Medicine / MedlinePlus", "title": "Reticulocyte Count", "url": "https://medlineplus.gov/lab-tests/reticulocyte-count/" }
+      ]
+    },
+    {
+      "context_group_code": "MACROCYTIC_ANEMIA_CONTEXT",
+      "conclusion_codes": ["macrocytic_anemia_pattern"],
+      "review_status": "APPROVED",
+      "patient_friendly_meaning": {
+        "en": "The results show reduced hemoglobin together with red blood cells that are larger than usual, a pattern sometimes called macrocytic anemia.",
+        "ar": "تُظهر النتائج انخفاضًا في الهيموغلوبين مع كريات دم حمراء أكبر من المعتاد، وهو نمط يُعرف أحيانًا بفقر الدم كبير الكريات."
+      },
+      "clinical_relevance": {
+        "en": "A macrocytic pattern often points toward vitamin B12 or folate deficiency, though other causes exist.",
+        "ar": "غالبًا ما يشير النمط كبير الكريات إلى نقص فيتامين B12 أو الفولات، رغم وجود أسباب أخرى."
+      },
+      "possible_causes": [
+        { "code": "MACROCYTIC_CAUSE_B12_DEFICIENCY", "label": { "en": "Vitamin B12 deficiency", "ar": "نقص فيتامين B12" }, "description": { "en": "Insufficient B12, needed for normal red-cell maturation.", "ar": "نقص فيتامين B12 اللازم لنضج طبيعي للكريات الحمراء." } },
+        { "code": "MACROCYTIC_CAUSE_FOLATE_DEFICIENCY", "label": { "en": "Folate deficiency", "ar": "نقص الفولات" }, "description": { "en": "Insufficient folate, needed for normal red-cell maturation.", "ar": "نقص الفولات اللازم لنضج طبيعي للكريات الحمراء." } },
+        { "code": "MACROCYTIC_CAUSE_LIVER_DISEASE", "label": { "en": "Liver disease", "ar": "مرض كبدي" }, "description": { "en": "Liver conditions can be associated with larger red cells.", "ar": "قد ترتبط الحالات الكبدية بكبر حجم الكريات الحمراء." } },
+        { "code": "MACROCYTIC_CAUSE_ALCOHOL_USE", "label": { "en": "Alcohol use", "ar": "تعاطي الكحول" }, "description": { "en": "Regular alcohol use can affect red-cell size.", "ar": "قد يؤثر تعاطي الكحول المنتظم في حجم الكريات الحمراء." } },
+        { "code": "MACROCYTIC_CAUSE_MEDICATION_EFFECT", "label": { "en": "Certain medication effects", "ar": "تأثير بعض الأدوية" }, "description": { "en": "Some medications can affect red-cell size.", "ar": "قد تؤثر بعض الأدوية في حجم الكريات الحمراء." } }
+      ],
+      "common_symptoms": [
+        { "code": "ANEMIA_SYMPTOM_FATIGUE", "text": { "en": "Fatigue and weakness", "ar": "تعب وإرهاق" } },
+        { "code": "ANEMIA_SYMPTOM_DYSPNEA", "text": { "en": "Shortness of breath", "ar": "ضيق في التنفس" } },
+        { "code": "MACROCYTIC_SYMPTOM_NEUROLOGIC", "text": { "en": "Numbness, tingling, or balance problems can accompany longstanding B12 deficiency specifically.", "ar": "قد يرافق نقص فيتامين B12 طويل الأمد تحديدًا خدر أو وخز أو مشكلات في التوازن." } }
+      ],
+      "general_next_steps": [
+        { "code": "MACROCYTIC_NEXT_STEP_B12_FOLATE", "text": { "en": "Vitamin B12, folate, and liver function tests are commonly used to help determine the cause.", "ar": "غالبًا ما تُستخدم فحوصات فيتامين B12 والفولات ووظائف الكبد للمساعدة في تحديد السبب." } },
+        { "code": "ANEMIA_NEXT_STEP_DISCUSS", "text": { "en": "Discuss this result with a healthcare professional.", "ar": "مناقشة هذه النتيجة مع مختص طبي." } }
+      ],
+      "red_flags": [
+        { "code": "ANEMIA_RED_FLAG_SEVERE_SYMPTOMS", "text": { "en": "Severe or rapidly worsening symptoms such as chest pain, fainting, or severe shortness of breath may warrant faster medical evaluation.", "ar": "الأعراض الشديدة أو المتفاقمة بسرعة مثل ألم الصدر أو الإغماء أو ضيق التنفس الشديد قد تستدعي تقييمًا طبيًا أسرع." } }
+      ],
+      "student_context": {
+        "pathophysiology": {
+          "en": "Impaired DNA synthesis, most classically from B12 or folate deficiency, leads to larger, immature red cells released into circulation.",
+          "ar": "يؤدي ضعف تصنيع الحمض النووي، وأكثره شيوعًا بسبب نقص B12 أو الفولات، إلى إطلاق كريات حمراء أكبر وغير ناضجة في الدورة الدموية."
+        },
+        "differential_considerations": [
+          { "code": "MACROCYTIC_DDX_B12", "text": { "en": "B12 deficiency", "ar": "نقص B12" } },
+          { "code": "MACROCYTIC_DDX_FOLATE", "text": { "en": "Folate deficiency", "ar": "نقص الفولات" } },
+          { "code": "MACROCYTIC_DDX_LIVER", "text": { "en": "Liver disease", "ar": "مرض كبدي" } },
+          { "code": "MACROCYTIC_DDX_ALCOHOL", "text": { "en": "Alcohol use", "ar": "تعاطي الكحول" } },
+          { "code": "MACROCYTIC_DDX_HYPOTHYROID", "text": { "en": "Hypothyroidism", "ar": "قصور الغدة الدرقية" } }
+        ],
+        "distinguishing_information": [
+          { "code": "MACROCYTIC_DISTINGUISH_LEVELS", "text": { "en": "B12/folate levels, liver enzymes, and thyroid function testing help narrow the cause.", "ar": "تساعد مستويات B12/الفولات وإنزيمات الكبد ووظائف الغدة الدرقية في تضييق السبب." } },
+          { "code": "MACROCYTIC_DISTINGUISH_SMEAR", "text": { "en": "Hypersegmented neutrophils on a peripheral smear suggest a megaloblastic (B12/folate-related) process.", "ar": "يشير وجود عدلات مفرطة التقسّم في لطاخة الدم المحيطية إلى عملية ضخمة الأرومات مرتبطة بنقص B12/الفولات." } }
+        ],
+        "learning_points": [
+          { "code": "MACROCYTIC_LEARNING_MEGALOBLASTIC", "text": { "en": "Distinguishing megaloblastic (B12/folate) from non-megaloblastic macrocytosis (liver disease, alcohol, hypothyroidism) guides the initial work-up.", "ar": "يوجّه التمييز بين كبر الكريات الضخم الأرومات (B12/الفولات) وغير الضخم الأرومات (مرض كبدي، كحول، قصور درقي) خطوات التقييم الأولية." } }
+        ]
+      },
+      "sources": [
+        { "source_id": "SRC_MEDLINEPLUS_ANEMIA", "organization": "U.S. National Library of Medicine / MedlinePlus", "title": "Anemia", "url": "https://medlineplus.gov/anemia.html" },
+        { "source_id": "SRC_MEDLINEPLUS_RBC_INDICES_2024", "organization": "U.S. National Library of Medicine / MedlinePlus", "title": "Red Blood Cell (RBC) Indices", "url": "https://medlineplus.gov/lab-tests/red-blood-cell-rbc-indices/" }
+      ]
+    },
+    {
+      "context_group_code": "POLYCYTHEMIA_CONTEXT",
+      "conclusion_codes": ["possible_polycythemia_pattern"],
+      "review_status": "APPROVED",
+      "patient_friendly_meaning": {
+        "en": "The results show hemoglobin, hematocrit, or red-cell count above the reference range, a pattern sometimes called polycythemia.",
+        "ar": "تُظهر النتائج ارتفاعًا في الهيموغلوبين أو الهيماتوكريت أو عدد الكريات الحمراء عن المجال المرجعي، وهو نمط يُعرف أحيانًا بكثرة الكريات الحمراء."
+      },
+      "clinical_relevance": {
+        "en": "An elevated red-cell count increases blood viscosity and can have several different underlying drivers.",
+        "ar": "يزيد ارتفاع عدد الكريات الحمراء من لزوجة الدم، وقد يكون له عدة أسباب كامنة مختلفة."
+      },
+      "possible_causes": [
+        { "code": "POLYCYTHEMIA_CAUSE_DEHYDRATION", "label": { "en": "Dehydration", "ar": "الجفاف" }, "description": { "en": "Reduced blood plasma volume can concentrate red-cell measurements without a true increase in red-cell mass.", "ar": "قد يؤدي انخفاض حجم بلازما الدم إلى تركيز قياسات الكريات الحمراء دون زيادة حقيقية في كتلتها." } },
+        { "code": "POLYCYTHEMIA_CAUSE_SMOKING", "label": { "en": "Smoking", "ar": "التدخين" }, "description": { "en": "Smoking can be associated with elevated red-cell measurements.", "ar": "قد يرتبط التدخين بارتفاع قياسات الكريات الحمراء." } },
+        { "code": "POLYCYTHEMIA_CAUSE_CHRONIC_LOW_OXYGEN", "label": { "en": "Chronic low oxygen levels", "ar": "انخفاض مزمن في مستوى الأكسجين" }, "description": { "en": "Conditions causing chronic low blood oxygen can drive increased red-cell production.", "ar": "قد تدفع الحالات المسببة لانخفاض مزمن في أكسجين الدم إلى زيادة إنتاج الكريات الحمراء." } },
+        { "code": "POLYCYTHEMIA_CAUSE_HIGH_ALTITUDE", "label": { "en": "High altitude", "ar": "الارتفاعات الشاهقة" }, "description": { "en": "Living at high altitude can be associated with a higher red-cell count.", "ar": "قد يرتبط العيش في ارتفاعات شاهقة بارتفاع عدد الكريات الحمراء." } },
+        { "code": "POLYCYTHEMIA_CAUSE_POLYCYTHEMIA_VERA", "label": { "en": "Polycythemia vera", "ar": "كثرة الحمر الحقيقية" }, "description": { "en": "A less common bone marrow condition that produces excess red blood cells.", "ar": "حالة أقل شيوعًا في نخاع العظم تؤدي إلى إنتاج زائد للكريات الحمراء." } }
+      ],
+      "common_symptoms": [
+        { "code": "POLYCYTHEMIA_SYMPTOM_HEADACHE", "text": { "en": "Headache", "ar": "صداع" } },
+        { "code": "POLYCYTHEMIA_SYMPTOM_DIZZINESS", "text": { "en": "Dizziness", "ar": "دوخة" } },
+        { "code": "POLYCYTHEMIA_SYMPTOM_TINNITUS", "text": { "en": "Ringing in the ears (tinnitus)", "ar": "طنين في الأذن" } },
+        { "code": "POLYCYTHEMIA_SYMPTOM_ITCHY_SKIN", "text": { "en": "Itchy skin, sometimes after a warm bath", "ar": "حكة جلدية، أحيانًا بعد الاستحمام الدافئ" } },
+        { "code": "POLYCYTHEMIA_SYMPTOM_REDDENED_SKIN", "text": { "en": "Reddened skin", "ar": "احمرار الجلد" } }
+      ],
+      "general_next_steps": [
+        { "code": "POLYCYTHEMIA_NEXT_STEP_REPEAT_OXYGEN", "text": { "en": "A repeat CBC and oxygen saturation check are commonly used first steps.", "ar": "يُعد تكرار تعداد الدم الكامل وفحص تشبع الأكسجين من الخطوات الأولى الشائعة." } },
+        { "code": "ANEMIA_NEXT_STEP_DISCUSS", "text": { "en": "Discuss this result with a healthcare professional, especially if it persists on repeat testing.", "ar": "مناقشة هذه النتيجة مع مختص طبي، خاصة إذا استمرت عند إعادة الفحص." } }
+      ],
+      "red_flags": [],
+      "student_context": {
+        "pathophysiology": {
+          "en": "Increased red-cell mass raises blood viscosity, which can affect blood flow.",
+          "ar": "تزيد كتلة الكريات الحمراء المرتفعة من لزوجة الدم، وقد يؤثر ذلك في تدفقه."
+        },
+        "differential_considerations": [
+          { "code": "POLYCYTHEMIA_DDX_RELATIVE", "text": { "en": "Relative (apparent) polycythemia from reduced plasma volume, e.g. dehydration", "ar": "كثرة كريات نسبية (ظاهرية) بسبب انخفاض حجم البلازما، مثل الجفاف" } },
+          { "code": "POLYCYTHEMIA_DDX_SECONDARY", "text": { "en": "Secondary polycythemia from chronic hypoxia, smoking, or high altitude", "ar": "كثرة كريات ثانوية بسبب نقص الأكسجين المزمن أو التدخين أو الارتفاعات الشاهقة" } },
+          { "code": "POLYCYTHEMIA_DDX_PRIMARY", "text": { "en": "Primary bone marrow disorder (polycythemia vera), often associated with a JAK2 gene mutation", "ar": "اضطراب نخاعي أولي (كثرة الحمر الحقيقية)، ويرتبط غالبًا بطفرة في جين JAK2" } }
+        ],
+        "distinguishing_information": [
+          { "code": "POLYCYTHEMIA_DISTINGUISH_EPO", "text": { "en": "Erythropoietin level is typically low in polycythemia vera and high in secondary, hypoxia-driven causes.", "ar": "يكون مستوى الإريثروبويتين منخفضًا عادةً في كثرة الحمر الحقيقية ومرتفعًا في الأسباب الثانوية المرتبطة بنقص الأكسجين." } },
+          { "code": "POLYCYTHEMIA_DISTINGUISH_JAK2", "text": { "en": "JAK2 mutation testing can support a diagnosis of polycythemia vera when clinically indicated.", "ar": "يمكن أن يدعم فحص طفرة JAK2 تشخيص كثرة الحمر الحقيقية عند الحاجة السريرية." } }
+        ],
+        "learning_points": [
+          { "code": "POLYCYTHEMIA_LEARNING_RELATIVE_VS_ABSOLUTE", "text": { "en": "Distinguishing relative from absolute (true) erythrocytosis is the key first step in evaluation.", "ar": "يُعد التمييز بين كثرة الكريات النسبية والحقيقية (المطلقة) الخطوة الأولى الأساسية في التقييم." } }
+        ]
+      },
+      "sources": [
+        { "source_id": "SRC_MEDLINEPLUS_POLYCYTHEMIA_VERA", "organization": "U.S. National Library of Medicine / MedlinePlus", "title": "Polycythemia vera", "url": "https://medlineplus.gov/ency/article/000589.htm" }
+      ]
+    },
+    {
+      "context_group_code": "INFECTION_INFLAMMATION_WBC_CONTEXT",
+      "conclusion_codes": ["possible_infection_inflammation_pattern"],
+      "superseded_by_group_codes": ["NEUTROPHILIA_CONTEXT", "LYMPHOCYTOSIS_CONTEXT"],
+      "review_status": "APPROVED",
+      "patient_friendly_meaning": {
+        "en": "The results show a white-blood-cell count above the reference range, a pattern often related to infection, inflammation, or stress on the body.",
+        "ar": "تُظهر النتائج ارتفاعًا في عدد كريات الدم البيضاء عن المجال المرجعي، وهو نمط غالبًا ما يرتبط بعدوى أو التهاب أو إجهاد يتعرض له الجسم."
+      },
+      "clinical_relevance": {
+        "en": "White blood cells rise in response to infection, inflammation, physical or emotional stress, and certain medications.",
+        "ar": "ترتفع كريات الدم البيضاء استجابةً للعدوى أو الالتهاب أو الإجهاد الجسدي أو النفسي وبعض الأدوية."
+      },
+      "possible_causes": [
+        { "code": "WBC_HIGH_CAUSE_BACTERIAL_INFECTION", "label": { "en": "Bacterial infection", "ar": "عدوى بكتيرية" }, "description": { "en": "A common trigger for an elevated white-cell count.", "ar": "من المحفزات الشائعة لارتفاع عدد كريات الدم البيضاء." } },
+        { "code": "WBC_HIGH_CAUSE_INFLAMMATION", "label": { "en": "Inflammatory disease", "ar": "مرض التهابي" }, "description": { "en": "Conditions such as rheumatoid arthritis or allergic disease.", "ar": "حالات مثل التهاب المفاصل الروماتويدي أو الأمراض التحسسية." } },
+        { "code": "WBC_HIGH_CAUSE_STRESS", "label": { "en": "Physical or emotional stress", "ar": "إجهاد جسدي أو نفسي" }, "description": { "en": "Stress on the body can transiently raise the white-cell count.", "ar": "قد يرفع الإجهاد الذي يتعرض له الجسم عدد كريات الدم البيضاء بشكل مؤقت." } },
+        { "code": "WBC_HIGH_CAUSE_MEDICATION", "label": { "en": "Certain medications (e.g. steroids)", "ar": "بعض الأدوية (مثل الستيرويدات)" }, "description": { "en": "Some medications, including steroids, can raise the white-cell count.", "ar": "قد ترفع بعض الأدوية، بما فيها الستيرويدات، عدد كريات الدم البيضاء." } }
+      ],
+      "common_symptoms": [
+        { "code": "WBC_HIGH_SYMPTOM_FEVER", "text": { "en": "Fever, if the cause is infection", "ar": "حمى، إذا كان السبب عدوى" } },
+        { "code": "WBC_HIGH_SYMPTOM_LOCALIZED", "text": { "en": "Symptoms related to the site of infection or inflammation, when present", "ar": "أعراض متعلقة بموضع العدوى أو الالتهاب، عند وجودها" } }
+      ],
+      "general_next_steps": [
+        { "code": "WBC_HIGH_NEXT_STEP_EXAM", "text": { "en": "Clinical examination together with inflammatory markers and a differential count commonly help clarify the cause.", "ar": "غالبًا ما يساعد الفحص السريري إلى جانب مؤشرات الالتهاب وعدّ الخلايا التفريقي في توضيح السبب." } },
+        { "code": "ANEMIA_NEXT_STEP_DISCUSS", "text": { "en": "Discuss this result with a healthcare professional, especially with fever or other symptoms.", "ar": "مناقشة هذه النتيجة مع مختص طبي، خاصة عند وجود حمى أو أعراض أخرى." } }
+      ],
+      "red_flags": [],
+      "student_context": {
+        "pathophysiology": {
+          "en": "Leukocytosis reflects marrow release and demargination of white cells in response to infection, inflammation, stress, or steroid effect.",
+          "ar": "تعكس زيادة كريات الدم البيضاء إطلاق النخاع للخلايا البيضاء وانفصالها عن جدران الأوعية استجابةً للعدوى أو الالتهاب أو الإجهاد أو تأثير الستيرويدات."
+        },
+        "differential_considerations": [
+          { "code": "WBC_HIGH_DDX_INFECTION", "text": { "en": "Infection (bacterial most classically)", "ar": "عدوى (بكتيرية بشكل أكثر شيوعًا)" } },
+          { "code": "WBC_HIGH_DDX_INFLAMMATION", "text": { "en": "Inflammatory or autoimmune disease", "ar": "مرض التهابي أو مناعي ذاتي" } },
+          { "code": "WBC_HIGH_DDX_STRESS_STEROID", "text": { "en": "Physiologic stress or steroid effect", "ar": "إجهاد فيزيولوجي أو تأثير ستيرويدات" } }
+        ],
+        "distinguishing_information": [
+          { "code": "WBC_HIGH_DISTINGUISH_DIFFERENTIAL", "text": { "en": "The differential count pattern (which white-cell type is elevated) helps narrow the cause.", "ar": "يساعد نمط عدّ الخلايا التفريقي (نوع الخلايا البيضاء المرتفع) في تضييق السبب." } },
+          { "code": "WBC_HIGH_DISTINGUISH_CRP", "text": { "en": "Trending inflammatory markers such as CRP alongside the clinical picture aids interpretation.", "ar": "تساعد متابعة مؤشرات الالتهاب مثل CRP إلى جانب الصورة السريرية في التفسير." } }
+        ],
+        "learning_points": [
+          { "code": "WBC_HIGH_LEARNING_DIFFERENTIAL_FIRST", "text": { "en": "Reviewing the differential (neutrophils vs. lymphocytes vs. eosinophils) is usually the first step before broadening the work-up.", "ar": "تُعد مراجعة العدّ التفريقي (العدلات مقابل اللمفاويات مقابل الحمضات) عادة الخطوة الأولى قبل توسيع التقييم." } }
+        ]
+      },
+      "sources": [
+        { "source_id": "SRC_MEDLINEPLUS_WBC_COUNT", "organization": "U.S. National Library of Medicine / MedlinePlus", "title": "WBC count", "url": "https://medlineplus.gov/ency/article/003643.htm" },
+        { "source_id": "SRC_MEDLINEPLUS_DIFFERENTIAL_2025", "organization": "U.S. National Library of Medicine / MedlinePlus", "title": "Blood differential test", "url": "https://medlineplus.gov/ency/article/003657.htm" }
+      ]
+    },
+    {
+      "context_group_code": "NEUTROPHILIA_CONTEXT",
+      "conclusion_codes": ["possible_neutrophilia_pattern"],
+      "review_status": "APPROVED",
+      "patient_friendly_meaning": {
+        "en": "The results show an elevated neutrophil count or percentage, the white-cell type most often raised during a bacterial infection or inflammatory response.",
+        "ar": "تُظهر النتائج ارتفاعًا في عدد أو نسبة العدلات، وهو نوع الخلايا البيضاء الذي يرتفع غالبًا أثناء عدوى بكتيرية أو استجابة التهابية."
+      },
+      "clinical_relevance": {
+        "en": "Neutrophilia often reflects an acute bacterial, inflammatory, or stress-related response.",
+        "ar": "غالبًا ما تعكس زيادة العدلات استجابة بكتيرية حادة أو التهابية أو مرتبطة بالإجهاد."
+      },
+      "possible_causes": [
+        { "code": "WBC_HIGH_CAUSE_BACTERIAL_INFECTION", "label": { "en": "Bacterial infection", "ar": "عدوى بكتيرية" }, "description": { "en": "The most classic trigger for neutrophilia.", "ar": "المحفز الأكثر شيوعًا لارتفاع العدلات." } },
+        { "code": "WBC_HIGH_CAUSE_INFLAMMATION", "label": { "en": "Inflammation", "ar": "التهاب" }, "description": { "en": "Inflammatory conditions can raise the neutrophil count.", "ar": "قد ترفع الحالات الالتهابية عدد العدلات." } },
+        { "code": "WBC_HIGH_CAUSE_STRESS", "label": { "en": "Physical or emotional stress", "ar": "إجهاد جسدي أو نفسي" }, "description": { "en": "Stress can transiently raise the neutrophil count.", "ar": "قد يرفع الإجهاد عدد العدلات بشكل مؤقت." } },
+        { "code": "WBC_HIGH_CAUSE_MEDICATION", "label": { "en": "Certain medications (e.g. steroids)", "ar": "بعض الأدوية (مثل الستيرويدات)" }, "description": { "en": "Some medications can raise the neutrophil count.", "ar": "قد ترفع بعض الأدوية عدد العدلات." } }
+      ],
+      "common_symptoms": [
+        { "code": "WBC_HIGH_SYMPTOM_FEVER", "text": { "en": "Fever, if the cause is infection", "ar": "حمى، إذا كان السبب عدوى" } }
+      ],
+      "general_next_steps": [
+        { "code": "WBC_HIGH_NEXT_STEP_EXAM", "text": { "en": "Clinical examination together with inflammatory markers commonly help clarify the cause.", "ar": "غالبًا ما يساعد الفحص السريري إلى جانب مؤشرات الالتهاب في توضيح السبب." } },
+        { "code": "ANEMIA_NEXT_STEP_DISCUSS", "text": { "en": "Discuss this result with a healthcare professional, especially with fever or other symptoms.", "ar": "مناقشة هذه النتيجة مع مختص طبي، خاصة عند وجود حمى أو أعراض أخرى." } }
+      ],
+      "red_flags": [],
+      "student_context": {
+        "pathophysiology": {
+          "en": "Neutrophilia most classically reflects an acute bacterial infection or inflammatory/stress response, with marrow release and demargination contributing to the rise.",
+          "ar": "تعكس زيادة العدلات بشكل أكثر شيوعًا عدوى بكتيرية حادة أو استجابة التهابية/إجهادية، مع إسهام إطلاق النخاع للخلايا وانفصالها عن جدران الأوعية في هذا الارتفاع."
+        },
+        "differential_considerations": [
+          { "code": "NEUTROPHILIA_DDX_BACTERIAL", "text": { "en": "Bacterial infection", "ar": "عدوى بكتيرية" } },
+          { "code": "NEUTROPHILIA_DDX_INFLAMMATION", "text": { "en": "Inflammatory disease", "ar": "مرض التهابي" } },
+          { "code": "NEUTROPHILIA_DDX_STEROID", "text": { "en": "Steroid or stress effect", "ar": "تأثير ستيرويدات أو إجهاد" } }
+        ],
+        "distinguishing_information": [
+          { "code": "NEUTROPHILIA_DISTINGUISH_LEFT_SHIFT", "text": { "en": "A 'left shift' (more immature neutrophil forms) supports an acute bacterial process.", "ar": "يدعم 'الانحراف الأيسر' (زيادة الأشكال غير الناضجة من العدلات) وجود عملية بكتيرية حادة." } },
+          { "code": "NEUTROPHILIA_DISTINGUISH_CRP", "text": { "en": "CRP trend alongside the clinical picture aids interpretation.", "ar": "يساعد اتجاه CRP إلى جانب الصورة السريرية في التفسير." } }
+        ],
+        "learning_points": [
+          { "code": "NEUTROPHILIA_LEARNING_ANC", "text": { "en": "The absolute neutrophil count (ANC), not only the percentage, is what determines clinical significance.", "ar": "يحدد العدد المطلق للعدلات (ANC)، وليس النسبة فقط، الأهمية السريرية." } }
+        ]
+      },
+      "sources": [
+        { "source_id": "SRC_MEDLINEPLUS_WBC_COUNT", "organization": "U.S. National Library of Medicine / MedlinePlus", "title": "WBC count", "url": "https://medlineplus.gov/ency/article/003643.htm" }
+      ]
+    },
+    {
+      "context_group_code": "LYMPHOCYTOSIS_CONTEXT",
+      "conclusion_codes": ["possible_lymphocytosis_pattern"],
+      "review_status": "APPROVED",
+      "patient_friendly_meaning": {
+        "en": "The results show an elevated lymphocyte count or percentage, most often related to a viral infection.",
+        "ar": "تُظهر النتائج ارتفاعًا في عدد أو نسبة اللمفاويات، ويرتبط ذلك غالبًا بعدوى فيروسية."
+      },
+      "clinical_relevance": {
+        "en": "Lymphocytosis often reflects a viral infection, though other, less common causes exist.",
+        "ar": "غالبًا ما تعكس زيادة اللمفاويات عدوى فيروسية، رغم وجود أسباب أخرى أقل شيوعًا."
+      },
+      "possible_causes": [
+        { "code": "LYMPHOCYTOSIS_CAUSE_VIRAL_INFECTION", "label": { "en": "Viral infection", "ar": "عدوى فيروسية" }, "description": { "en": "The most common trigger for lymphocytosis.", "ar": "المحفز الأكثر شيوعًا لزيادة اللمفاويات." } },
+        { "code": "LYMPHOCYTOSIS_CAUSE_CHRONIC_INFLAMMATION", "label": { "en": "Chronic inflammation", "ar": "التهاب مزمن" }, "description": { "en": "Some chronic inflammatory conditions can raise the lymphocyte count.", "ar": "قد ترفع بعض الحالات الالتهابية المزمنة عدد اللمفاويات." } },
+        { "code": "LYMPHOCYTOSIS_CAUSE_BLOOD_DISORDER", "label": { "en": "Certain blood disorders, especially if persistent", "ar": "بعض اضطرابات الدم، خاصة إذا كانت مستمرة" }, "description": { "en": "Persistent or atypical lymphocytosis warrants further evaluation.", "ar": "تستدعي زيادة اللمفاويات المستمرة أو غير النمطية مزيدًا من التقييم." } }
+      ],
+      "common_symptoms": [
+        { "code": "LYMPHOCYTOSIS_SYMPTOM_VIRAL_ILLNESS", "text": { "en": "Symptoms of a viral illness, such as fever, sore throat, or fatigue, when present", "ar": "أعراض مرض فيروسي، مثل الحمى أو التهاب الحلق أو التعب، عند وجودها" } }
+      ],
+      "general_next_steps": [
+        { "code": "LYMPHOCYTOSIS_NEXT_STEP_REPEAT", "text": { "en": "A repeat CBC and clinical review are commonly used, especially if the elevation persists.", "ar": "يُعد تكرار تعداد الدم الكامل والمراجعة السريرية من الخطوات الشائعة، خاصة إذا استمر الارتفاع." } },
+        { "code": "ANEMIA_NEXT_STEP_DISCUSS", "text": { "en": "Discuss this result with a healthcare professional.", "ar": "مناقشة هذه النتيجة مع مختص طبي." } }
+      ],
+      "red_flags": [],
+      "student_context": {
+        "pathophysiology": {
+          "en": "Lymphocytosis most often reflects a viral infection driving lymphocyte proliferation; persistent or atypical lymphocytosis raises consideration of a lymphoproliferative process.",
+          "ar": "غالبًا ما تعكس زيادة اللمفاويات عدوى فيروسية تحفّز تكاثر اللمفاويات؛ وتثير زيادة اللمفاويات المستمرة أو غير النمطية احتمال وجود عملية تكاثرية لمفاوية."
+        },
+        "differential_considerations": [
+          { "code": "LYMPHOCYTOSIS_DDX_VIRAL", "text": { "en": "Viral infection", "ar": "عدوى فيروسية" } },
+          { "code": "LYMPHOCYTOSIS_DDX_CHRONIC_INFLAMMATION", "text": { "en": "Chronic inflammatory condition", "ar": "حالة التهابية مزمنة" } },
+          { "code": "LYMPHOCYTOSIS_DDX_LYMPHOPROLIFERATIVE", "text": { "en": "Lymphoproliferative disorder, especially if persistent or atypical", "ar": "اضطراب تكاثري لمفاوي، خاصة إذا كان مستمرًا أو غير نمطي" } }
+        ],
+        "distinguishing_information": [
+          { "code": "LYMPHOCYTOSIS_DISTINGUISH_SMEAR", "text": { "en": "Peripheral smear morphology helps distinguish a reactive viral pattern from an atypical/clonal one.", "ar": "يساعد شكل الخلايا في لطاخة الدم المحيطية في التمييز بين النمط الفيروسي التفاعلي والنمط غير النمطي/المستنسخ." } },
+          { "code": "LYMPHOCYTOSIS_DISTINGUISH_PERSISTENCE", "text": { "en": "Persistence over time is an important factor supporting further evaluation.", "ar": "يُعد الاستمرار مع الوقت عاملًا مهمًا يدعم إجراء مزيد من التقييم." } }
+        ],
+        "learning_points": [
+          { "code": "LYMPHOCYTOSIS_LEARNING_REACTIVE_VS_CLONAL", "text": { "en": "Distinguishing reactive (viral) from clonal (lymphoproliferative) lymphocytosis is the key educational point here.", "ar": "يُعد التمييز بين زيادة اللمفاويات التفاعلية (الفيروسية) والمستنسخة (التكاثرية اللمفاوية) النقطة التعليمية الأساسية هنا." } }
+        ]
+      },
+      "sources": [
+        { "source_id": "SRC_MEDLINEPLUS_DIFFERENTIAL_2025", "organization": "U.S. National Library of Medicine / MedlinePlus", "title": "Blood differential test", "url": "https://medlineplus.gov/ency/article/003657.htm" }
+      ]
+    },
+    {
+      "context_group_code": "LOW_WBC_CONTEXT",
+      "conclusion_codes": ["possible_low_wbc_pattern"],
+      "superseded_by_group_codes": ["NEUTROPENIA_CONTEXT"],
+      "review_status": "APPROVED",
+      "patient_friendly_meaning": {
+        "en": "The results show a white-blood-cell count below the reference range.",
+        "ar": "تُظهر النتائج انخفاضًا في عدد كريات الدم البيضاء عن المجال المرجعي."
+      },
+      "clinical_relevance": {
+        "en": "A low white-cell count can reduce the body's usual defense against infection and has several possible causes.",
+        "ar": "قد يقلل انخفاض عدد كريات الدم البيضاء من الدفاع المعتاد للجسم ضد العدوى، وله عدة أسباب محتملة."
+      },
+      "possible_causes": [
+        { "code": "WBC_LOW_CAUSE_VIRAL_INFECTION", "label": { "en": "Viral infection", "ar": "عدوى فيروسية" }, "description": { "en": "Some viral infections can lower the white-cell count.", "ar": "قد تخفض بعض العدوى الفيروسية عدد كريات الدم البيضاء." } },
+        { "code": "WBC_LOW_CAUSE_MEDICATION", "label": { "en": "Certain medications", "ar": "بعض الأدوية" }, "description": { "en": "Some medications, including certain antibiotics, can lower the white-cell count.", "ar": "قد تخفض بعض الأدوية، ومنها بعض المضادات الحيوية، عدد كريات الدم البيضاء." } },
+        { "code": "WBC_LOW_CAUSE_AUTOIMMUNE", "label": { "en": "Autoimmune conditions", "ar": "حالات مناعية ذاتية" }, "description": { "en": "Some autoimmune conditions can lower the white-cell count.", "ar": "قد تخفض بعض الحالات المناعية الذاتية عدد كريات الدم البيضاء." } },
+        { "code": "ANEMIA_CAUSE_BONE_MARROW_DISORDER", "label": { "en": "Bone marrow disorders", "ar": "اضطرابات نخاع العظم" }, "description": { "en": "Conditions that reduce the bone marrow's ability to produce blood cells.", "ar": "حالات تقلل من قدرة نخاع العظم على إنتاج خلايا الدم." } }
+      ],
+      "common_symptoms": [
+        { "code": "WBC_LOW_SYMPTOM_INFECTION_RISK", "text": { "en": "May increase the risk of infection; mild cases may cause no noticeable symptoms.", "ar": "قد يزيد من خطر العدوى؛ وقد لا تسبب الحالات الخفيفة أي أعراض ملحوظة." } }
+      ],
+      "general_next_steps": [
+        { "code": "WBC_LOW_NEXT_STEP_REPEAT", "text": { "en": "A repeat CBC with differential and a medication review are commonly used first steps.", "ar": "يُعد تكرار تعداد الدم الكامل مع العدّ التفريقي ومراجعة الأدوية من الخطوات الأولى الشائعة." } },
+        { "code": "ANEMIA_NEXT_STEP_DISCUSS", "text": { "en": "Discuss this result with a healthcare professional, especially with fever or frequent infections.", "ar": "مناقشة هذه النتيجة مع مختص طبي، خاصة عند وجود حمى أو عدوى متكررة." } }
+      ],
+      "red_flags": [],
+      "student_context": {
+        "pathophysiology": {
+          "en": "Leukopenia reflects reduced white-cell production, increased destruction, or increased margination/sequestration.",
+          "ar": "يعكس نقص كريات الدم البيضاء انخفاض إنتاجها أو زيادة تكسّرها أو زيادة انحصارها/التصاقها بجدران الأوعية."
+        },
+        "differential_considerations": [
+          { "code": "WBC_LOW_DDX_VIRAL", "text": { "en": "Viral infection", "ar": "عدوى فيروسية" } },
+          { "code": "WBC_LOW_DDX_MEDICATION", "text": { "en": "Medication effect", "ar": "تأثير دوائي" } },
+          { "code": "WBC_LOW_DDX_AUTOIMMUNE", "text": { "en": "Autoimmune condition", "ar": "حالة مناعية ذاتية" } },
+          { "code": "WBC_LOW_DDX_MARROW", "text": { "en": "Bone marrow disorder", "ar": "اضطراب نخاعي" } }
+        ],
+        "distinguishing_information": [
+          { "code": "WBC_LOW_DISTINGUISH_DIFFERENTIAL", "text": { "en": "The differential count identifies which white-cell line is reduced.", "ar": "يحدد العدّ التفريقي أي خط من خطوط الخلايا البيضاء منخفض." } },
+          { "code": "WBC_LOW_DISTINGUISH_MEDICATION_HISTORY", "text": { "en": "A detailed medication history is important given how many drugs can cause this.", "ar": "يُعد التاريخ الدوائي التفصيلي مهمًا نظرًا لكثرة الأدوية التي قد تسبب ذلك." } }
+        ],
+        "learning_points": [
+          { "code": "WBC_LOW_LEARNING_SEVERITY", "text": { "en": "The severity and trajectory of the drop matter as much as the single value.", "ar": "تُعد شدة الانخفاض ومساره على القدر نفسه من الأهمية مثل القيمة المفردة." } }
+        ]
+      },
+      "sources": [
+        { "source_id": "SRC_MEDLINEPLUS_WBC_COUNT", "organization": "U.S. National Library of Medicine / MedlinePlus", "title": "WBC count", "url": "https://medlineplus.gov/ency/article/003643.htm" },
+        { "source_id": "SRC_MEDLINEPLUS_DIFFERENTIAL_2025", "organization": "U.S. National Library of Medicine / MedlinePlus", "title": "Blood differential test", "url": "https://medlineplus.gov/ency/article/003657.htm" }
+      ]
+    },
+    {
+      "context_group_code": "NEUTROPENIA_CONTEXT",
+      "conclusion_codes": ["possible_neutropenia_pattern"],
+      "review_status": "APPROVED",
+      "patient_friendly_meaning": {
+        "en": "The results show a low absolute neutrophil count, the white-cell type most important for fighting bacterial infection.",
+        "ar": "تُظهر النتائج انخفاضًا في العدد المطلق للعدلات، وهي نوع الخلايا البيضاء الأهم في مكافحة العدوى البكتيرية."
+      },
+      "clinical_relevance": {
+        "en": "Neutropenia can reduce the body's primary defense against bacterial and fungal infection.",
+        "ar": "قد يقلل نقص العدلات من الدفاع الأساسي للجسم ضد العدوى البكتيرية والفطرية."
+      },
+      "possible_causes": [
+        { "code": "WBC_LOW_CAUSE_VIRAL_INFECTION", "label": { "en": "Viral infection", "ar": "عدوى فيروسية" }, "description": { "en": "Some viral infections can lower the neutrophil count.", "ar": "قد تخفض بعض العدوى الفيروسية عدد العدلات." } },
+        { "code": "WBC_LOW_CAUSE_MEDICATION", "label": { "en": "Certain medications", "ar": "بعض الأدوية" }, "description": { "en": "Some medications can lower the neutrophil count.", "ar": "قد تخفض بعض الأدوية عدد العدلات." } },
+        { "code": "NEUTROPENIA_CAUSE_MARROW_SUPPRESSION", "label": { "en": "Bone marrow suppression", "ar": "تثبيط نخاع العظم" }, "description": { "en": "Conditions or treatments that suppress bone marrow activity.", "ar": "حالات أو علاجات تثبط نشاط نخاع العظم." } },
+        { "code": "WBC_LOW_CAUSE_AUTOIMMUNE", "label": { "en": "Autoimmune causes", "ar": "أسباب مناعية ذاتية" }, "description": { "en": "Some autoimmune conditions can lower the neutrophil count.", "ar": "قد تخفض بعض الحالات المناعية الذاتية عدد العدلات." } }
+      ],
+      "common_symptoms": [
+        { "code": "NEUTROPENIA_SYMPTOM_INFECTION_RISK", "text": { "en": "May increase susceptibility to infection, especially with fever.", "ar": "قد يزيد من قابلية التعرض للعدوى، خاصة عند وجود حمى." } }
+      ],
+      "general_next_steps": [
+        { "code": "WBC_LOW_NEXT_STEP_REPEAT", "text": { "en": "A repeat CBC and a medication review are commonly used first steps.", "ar": "يُعد تكرار تعداد الدم الكامل ومراجعة الأدوية من الخطوات الأولى الشائعة." } },
+        { "code": "ANEMIA_NEXT_STEP_DISCUSS", "text": { "en": "Medical evaluation is recommended, especially with fever.", "ar": "يُوصى بالتقييم الطبي، خاصة عند وجود حمى." } }
+      ],
+      "red_flags": [
+        { "code": "NEUTROPENIA_RED_FLAG_FEVER", "text": { "en": "Fever together with a low neutrophil count can be urgent and generally warrants prompt medical attention.", "ar": "قد تكون الحمى المصاحبة لانخفاض العدلات حالة عاجلة، وتستدعي عادةً عناية طبية سريعة." } }
+      ],
+      "student_context": {
+        "pathophysiology": {
+          "en": "Neutropenia reduces the primary cellular defense against bacterial and fungal pathogens, with infection risk rising as the absolute neutrophil count falls.",
+          "ar": "يقلل نقص العدلات من الدفاع الخلوي الأساسي ضد مسببات الأمراض البكتيرية والفطرية، ويزداد خطر العدوى مع انخفاض العدد المطلق للعدلات."
+        },
+        "differential_considerations": [
+          { "code": "NEUTROPENIA_DDX_VIRAL", "text": { "en": "Viral infection", "ar": "عدوى فيروسية" } },
+          { "code": "NEUTROPENIA_DDX_MEDICATION", "text": { "en": "Medication effect", "ar": "تأثير دوائي" } },
+          { "code": "NEUTROPENIA_DDX_MARROW_SUPPRESSION", "text": { "en": "Bone marrow suppression", "ar": "تثبيط نخاع العظم" } },
+          { "code": "NEUTROPENIA_DDX_AUTOIMMUNE", "text": { "en": "Autoimmune cause", "ar": "سبب مناعي ذاتي" } }
+        ],
+        "distinguishing_information": [
+          { "code": "NEUTROPENIA_DISTINGUISH_SEVERITY", "text": { "en": "The absolute neutrophil count severity and duration guide urgency and work-up.", "ar": "توجّه شدة العدد المطلق للعدلات ومدتها درجة الاستعجال والتقييم." } },
+          { "code": "NEUTROPENIA_DISTINGUISH_MEDICATION_HISTORY", "text": { "en": "Medication history is central given the range of drugs that can cause neutropenia.", "ar": "يُعد التاريخ الدوائي محوريًا نظرًا لتنوع الأدوية التي قد تسبب نقص العدلات." } }
+        ],
+        "learning_points": [
+          { "code": "NEUTROPENIA_LEARNING_FEBRILE", "text": { "en": "Febrile neutropenia is a recognized medical urgency distinct from asymptomatic mild neutropenia.", "ar": "يُعد نقص العدلات الحموي حالة طبية عاجلة معروفة، وتختلف عن نقص العدلات الخفيف بلا أعراض." } }
+        ]
+      },
+      "sources": [
+        { "source_id": "SRC_MEDLINEPLUS_WBC_COUNT", "organization": "U.S. National Library of Medicine / MedlinePlus", "title": "WBC count", "url": "https://medlineplus.gov/ency/article/003643.htm" }
+      ]
+    },
+    {
+      "context_group_code": "EOSINOPHILIA_CONTEXT",
+      "conclusion_codes": ["possible_eosinophilia_pattern"],
+      "review_status": "APPROVED",
+      "patient_friendly_meaning": {
+        "en": "The results show an elevated eosinophil count or percentage, a white-cell type often related to allergy or parasite exposure.",
+        "ar": "تُظهر النتائج ارتفاعًا في عدد أو نسبة الحمضات، وهي نوع من الخلايا البيضاء يرتبط غالبًا بالحساسية أو التعرض للطفيليات."
+      },
+      "clinical_relevance": {
+        "en": "Eosinophilia commonly reflects an allergic, parasitic, or medication-related process.",
+        "ar": "غالبًا ما تعكس زيادة الحمضات عملية تحسسية أو طفيلية أو مرتبطة بالأدوية."
+      },
+      "possible_causes": [
+        { "code": "EOSINOPHILIA_CAUSE_ALLERGY", "label": { "en": "Allergy", "ar": "حساسية" }, "description": { "en": "A common trigger for elevated eosinophils.", "ar": "من المحفزات الشائعة لارتفاع الحمضات." } },
+        { "code": "EOSINOPHILIA_CAUSE_ASTHMA", "label": { "en": "Asthma", "ar": "الربو" }, "description": { "en": "Asthma can be associated with elevated eosinophils.", "ar": "قد يرتبط الربو بارتفاع الحمضات." } },
+        { "code": "EOSINOPHILIA_CAUSE_PARASITE", "label": { "en": "Parasite exposure", "ar": "التعرض للطفيليات" }, "description": { "en": "Some parasitic infections raise eosinophils.", "ar": "قد ترفع بعض العدوى الطفيلية عدد الحمضات." } },
+        { "code": "EOSINOPHILIA_CAUSE_MEDICATION", "label": { "en": "Medication reaction", "ar": "تفاعل دوائي" }, "description": { "en": "Some medications can trigger elevated eosinophils.", "ar": "قد تحفّز بعض الأدوية ارتفاع الحمضات." } }
+      ],
+      "common_symptoms": [
+        { "code": "EOSINOPHILIA_SYMPTOM_ALLERGIC", "text": { "en": "Allergic symptoms such as itching, rash, or nasal congestion, when present", "ar": "أعراض تحسسية مثل الحكة أو الطفح الجلدي أو احتقان الأنف، عند وجودها" } }
+      ],
+      "general_next_steps": [
+        { "code": "EOSINOPHILIA_NEXT_STEP_EVALUATION", "text": { "en": "Allergy evaluation, a medication review, and stool testing if parasite exposure is a concern are commonly used next steps.", "ar": "يُعد تقييم الحساسية ومراجعة الأدوية وفحص البراز عند احتمال التعرض للطفيليات من الخطوات التالية الشائعة." } },
+        { "code": "ANEMIA_NEXT_STEP_DISCUSS", "text": { "en": "Discuss this result with a healthcare professional if it persists or is accompanied by symptoms.", "ar": "مناقشة هذه النتيجة مع مختص طبي إذا استمرت أو رافقتها أعراض." } }
+      ],
+      "red_flags": [],
+      "student_context": {
+        "pathophysiology": {
+          "en": "Eosinophilia most often reflects allergic/atopic, parasitic, or drug-hypersensitivity processes, and less commonly autoimmune or hematologic disease.",
+          "ar": "غالبًا ما تعكس زيادة الحمضات عمليات تحسسية/أرجية أو طفيلية أو فرط حساسية دوائية، وأقل شيوعًا أمراض مناعية ذاتية أو دموية."
+        },
+        "differential_considerations": [
+          { "code": "EOSINOPHILIA_DDX_ALLERGIC", "text": { "en": "Allergic/atopic disease", "ar": "مرض تحسسي/أرجي" } },
+          { "code": "EOSINOPHILIA_DDX_PARASITIC", "text": { "en": "Parasitic infection", "ar": "عدوى طفيلية" } },
+          { "code": "EOSINOPHILIA_DDX_DRUG", "text": { "en": "Drug hypersensitivity", "ar": "فرط حساسية دوائية" } }
+        ],
+        "distinguishing_information": [
+          { "code": "EOSINOPHILIA_DISTINGUISH_EXPOSURE", "text": { "en": "Exposure history (travel, medications, known allergies) helps narrow the cause.", "ar": "يساعد التاريخ المتعلق بالتعرض (السفر، الأدوية، الحساسيات المعروفة) في تضييق السبب." } },
+          { "code": "EOSINOPHILIA_DISTINGUISH_STOOL", "text": { "en": "Stool studies help evaluate parasitic causes when relevant.", "ar": "تساعد فحوصات البراز في تقييم الأسباب الطفيلية عند الحاجة." } }
+        ],
+        "learning_points": [
+          { "code": "EOSINOPHILIA_LEARNING_DEGREE", "text": { "en": "The degree of eosinophilia and its persistence help determine how far the evaluation should extend.", "ar": "تساعد درجة زيادة الحمضات واستمرارها في تحديد مدى اتساع التقييم." } }
+        ]
+      },
+      "sources": [
+        { "source_id": "SRC_MEDLINEPLUS_DIFFERENTIAL_2025", "organization": "U.S. National Library of Medicine / MedlinePlus", "title": "Blood differential test", "url": "https://medlineplus.gov/ency/article/003657.htm" }
+      ]
+    },
+    {
+      "context_group_code": "THROMBOCYTOPENIA_CONTEXT",
+      "conclusion_codes": ["possible_thrombocytopenia_pattern"],
+      "review_status": "APPROVED",
+      "patient_friendly_meaning": {
+        "en": "The results show a platelet count below the reference range, a pattern called thrombocytopenia.",
+        "ar": "تُظهر النتائج انخفاضًا في عدد الصفيحات عن المجال المرجعي، وهو نمط يُعرف بنقص الصفيحات."
+      },
+      "clinical_relevance": {
+        "en": "Platelets help blood clot, so a low count can increase bleeding risk depending on severity.",
+        "ar": "تساعد الصفيحات في تخثر الدم، لذا قد يزيد انخفاض عددها من خطر النزيف بحسب شدته."
+      },
+      "possible_causes": [
+        { "code": "THROMBOCYTOPENIA_CAUSE_VIRAL_INFECTION", "label": { "en": "Viral infection", "ar": "عدوى فيروسية" }, "description": { "en": "Some viral infections can lower the platelet count.", "ar": "قد تخفض بعض العدوى الفيروسية عدد الصفيحات." } },
+        { "code": "THROMBOCYTOPENIA_CAUSE_MEDICATION", "label": { "en": "Medication effect", "ar": "تأثير دوائي" }, "description": { "en": "Some medications can lower the platelet count.", "ar": "قد تخفض بعض الأدوية عدد الصفيحات." } },
+        { "code": "THROMBOCYTOPENIA_CAUSE_IMMUNE", "label": { "en": "Immune thrombocytopenia", "ar": "نقص الصفيحات المناعي" }, "description": { "en": "The immune system mistakenly destroys platelets.", "ar": "يهاجم الجهاز المناعي الصفيحات عن طريق الخطأ ويؤدي إلى تكسّرها." } },
+        { "code": "ANEMIA_CAUSE_BONE_MARROW_DISORDER", "label": { "en": "Bone marrow disorders", "ar": "اضطرابات نخاع العظم" }, "description": { "en": "Conditions that reduce the bone marrow's ability to produce platelets.", "ar": "حالات تقلل من قدرة نخاع العظم على إنتاج الصفيحات." } },
+        { "code": "THROMBOCYTOPENIA_CAUSE_LIVER_SPLEEN", "label": { "en": "Liver or spleen-related problems", "ar": "مشكلات متعلقة بالكبد أو الطحال" }, "description": { "en": "Liver disease or an enlarged spleen can trap or reduce platelets.", "ar": "قد يحبس مرض الكبد أو تضخم الطحال الصفيحات أو يقلل عددها." } }
+      ],
+      "common_symptoms": [
+        { "code": "THROMBOCYTOPENIA_SYMPTOM_BRUISING", "text": { "en": "Easy or excessive bruising", "ar": "كدمات سهلة أو مفرطة" } },
+        { "code": "THROMBOCYTOPENIA_SYMPTOM_GUM_BLEEDING", "text": { "en": "Bleeding gums", "ar": "نزيف اللثة" } },
+        { "code": "THROMBOCYTOPENIA_SYMPTOM_NOSEBLEEDS", "text": { "en": "Nosebleeds", "ar": "نزيف الأنف" } },
+        { "code": "THROMBOCYTOPENIA_SYMPTOM_PETECHIAE", "text": { "en": "Small pinpoint red or purple spots on the skin (petechiae)", "ar": "بقع صغيرة حمراء أو أرجوانية على الجلد (نمشات)" } }
+      ],
+      "general_next_steps": [
+        { "code": "THROMBOCYTOPENIA_NEXT_STEP_REPEAT", "text": { "en": "A repeat CBC, peripheral smear, and medication review are commonly used first steps.", "ar": "يُعد تكرار تعداد الدم الكامل ولطاخة الدم المحيطية ومراجعة الأدوية من الخطوات الأولى الشائعة." } },
+        { "code": "ANEMIA_NEXT_STEP_DISCUSS", "text": { "en": "Discuss this result with a healthcare professional.", "ar": "مناقشة هذه النتيجة مع مختص طبي." } }
+      ],
+      "red_flags": [
+        { "code": "THROMBOCYTOPENIA_RED_FLAG_BLEEDING", "text": { "en": "Active or uncontrolled bleeding warrants urgent medical care.", "ar": "يستدعي النزيف النشط أو غير المسيطر عليه عناية طبية عاجلة." } }
+      ],
+      "student_context": {
+        "pathophysiology": {
+          "en": "Thrombocytopenia reflects reduced platelet production, increased destruction/consumption, or splenic sequestration.",
+          "ar": "يعكس نقص الصفيحات انخفاض إنتاجها أو زيادة تكسّرها/استهلاكها أو احتجازها في الطحال."
+        },
+        "differential_considerations": [
+          { "code": "THROMBOCYTOPENIA_DDX_VIRAL", "text": { "en": "Viral infection", "ar": "عدوى فيروسية" } },
+          { "code": "THROMBOCYTOPENIA_DDX_MEDICATION", "text": { "en": "Medication-induced", "ar": "بسبب الأدوية" } },
+          { "code": "THROMBOCYTOPENIA_DDX_IMMUNE", "text": { "en": "Immune thrombocytopenia (ITP)", "ar": "نقص الصفيحات المناعي" } },
+          { "code": "THROMBOCYTOPENIA_DDX_SPLENIC", "text": { "en": "Splenic sequestration (liver/spleen disease)", "ar": "احتجاز طحالي (مرض كبدي/طحالي)" } },
+          { "code": "THROMBOCYTOPENIA_DDX_MARROW", "text": { "en": "Bone marrow disorder", "ar": "اضطراب نخاعي" } }
+        ],
+        "distinguishing_information": [
+          { "code": "THROMBOCYTOPENIA_DISTINGUISH_SMEAR", "text": { "en": "Peripheral smear helps assess platelet morphology and exclude clumping artifact.", "ar": "تساعد لطاخة الدم المحيطية في تقييم شكل الصفيحات واستبعاد تكتلها كخطأ فني." } },
+          { "code": "THROMBOCYTOPENIA_DISTINGUISH_MEDICATION_HISTORY", "text": { "en": "A detailed medication history is important.", "ar": "يُعد التاريخ الدوائي التفصيلي مهمًا." } },
+          { "code": "THROMBOCYTOPENIA_DISTINGUISH_LIVER", "text": { "en": "Liver function tests and spleen assessment help evaluate a hepatosplenic contribution.", "ar": "تساعد فحوصات وظائف الكبد وتقييم الطحال في تقييم المساهمة الكبدية الطحالية." } }
+        ],
+        "learning_points": [
+          { "code": "THROMBOCYTOPENIA_LEARNING_SEVERITY", "text": { "en": "Bleeding risk correlates with platelet count severity, with risk rising notably below roughly 50,000/mcL.", "ar": "يرتبط خطر النزيف بشدة انخفاض عدد الصفيحات، ويرتفع بشكل ملحوظ عند انخفاضه دون نحو 50,000/ميكرولتر." } }
+        ]
+      },
+      "sources": [
+        { "source_id": "SRC_MEDLINEPLUS_PLATELET_DISORDERS", "organization": "U.S. National Library of Medicine / MedlinePlus", "title": "Platelet Disorders", "url": "https://medlineplus.gov/plateletdisorders.html" }
+      ]
+    },
+    {
+      "context_group_code": "THROMBOCYTOSIS_CONTEXT",
+      "conclusion_codes": ["possible_thrombocytosis_pattern"],
+      "review_status": "APPROVED",
+      "patient_friendly_meaning": {
+        "en": "The results show a platelet count above the reference range, a pattern called thrombocytosis.",
+        "ar": "تُظهر النتائج ارتفاعًا في عدد الصفيحات عن المجال المرجعي، وهو نمط يُعرف بارتفاع الصفيحات."
+      },
+      "clinical_relevance": {
+        "en": "An elevated platelet count is most often a reaction to another condition rather than a primary bone marrow disorder.",
+        "ar": "غالبًا ما يكون ارتفاع عدد الصفيحات استجابة لحالة أخرى وليس اضطرابًا نخاعيًا أوليًا."
+      },
+      "possible_causes": [
+        { "code": "THROMBOCYTOSIS_CAUSE_INFLAMMATION", "label": { "en": "Inflammation", "ar": "التهاب" }, "description": { "en": "A common reactive trigger.", "ar": "من المحفزات التفاعلية الشائعة." } },
+        { "code": "THROMBOCYTOSIS_CAUSE_INFECTION", "label": { "en": "Infection", "ar": "عدوى" }, "description": { "en": "Infection can raise the platelet count as part of the body's response.", "ar": "قد ترفع العدوى عدد الصفيحات كجزء من استجابة الجسم." } },
+        { "code": "MICROCYTIC_CAUSE_IRON_DEFICIENCY", "label": { "en": "Iron deficiency", "ar": "نقص الحديد" }, "description": { "en": "Iron deficiency can be associated with an elevated platelet count.", "ar": "قد يرتبط نقص الحديد بارتفاع عدد الصفيحات." } },
+        { "code": "THROMBOCYTOSIS_CAUSE_SURGERY", "label": { "en": "Recent surgery", "ar": "جراحة حديثة" }, "description": { "en": "Platelet count can rise after surgery.", "ar": "قد يرتفع عدد الصفيحات بعد الجراحة." } },
+        { "code": "ANEMIA_CAUSE_BONE_MARROW_DISORDER", "label": { "en": "Bone marrow disorders (less common)", "ar": "اضطرابات نخاع العظم (أقل شيوعًا)" }, "description": { "en": "A primary bone marrow disorder is a less common cause.", "ar": "يُعد الاضطراب النخاعي الأولي سببًا أقل شيوعًا." } }
+      ],
+      "common_symptoms": [
+        { "code": "THROMBOCYTOSIS_SYMPTOM_USUALLY_NONE", "text": { "en": "Often causes no noticeable symptoms and is found incidentally on routine testing.", "ar": "غالبًا لا يسبب أعراضًا ملحوظة ويُكتشف عرضيًا خلال الفحوصات الروتينية." } }
+      ],
+      "general_next_steps": [
+        { "code": "THROMBOCYTOSIS_NEXT_STEP_REPEAT", "text": { "en": "A repeat CBC together with iron studies and inflammatory markers are commonly used to look for a reactive cause.", "ar": "يُستخدم غالبًا تكرار تعداد الدم الكامل إلى جانب دراسات الحديد ومؤشرات الالتهاب للبحث عن سبب تفاعلي." } },
+        { "code": "ANEMIA_NEXT_STEP_DISCUSS", "text": { "en": "Discuss this result with a healthcare professional, especially if it persists on repeat testing.", "ar": "مناقشة هذه النتيجة مع مختص طبي، خاصة إذا استمرت عند إعادة الفحص." } }
+      ],
+      "red_flags": [],
+      "student_context": {
+        "pathophysiology": {
+          "en": "Reactive thrombocytosis, driven by inflammation, infection, iron deficiency, or recent surgery, is far more common than a primary bone marrow disorder such as essential thrombocythemia.",
+          "ar": "يُعد ارتفاع الصفيحات التفاعلي، المدفوع بالالتهاب أو العدوى أو نقص الحديد أو الجراحة الحديثة، أكثر شيوعًا بكثير من الاضطراب النخاعي الأولي مثل كثرة الصفيحات الأساسية."
+        },
+        "differential_considerations": [
+          { "code": "THROMBOCYTOSIS_DDX_REACTIVE", "text": { "en": "Reactive thrombocytosis (inflammation, infection, iron deficiency, post-surgical)", "ar": "ارتفاع صفيحات تفاعلي (التهاب، عدوى، نقص حديد، ما بعد الجراحة)" } },
+          { "code": "THROMBOCYTOSIS_DDX_PRIMARY", "text": { "en": "Primary (clonal) thrombocythemia, a bone marrow disorder", "ar": "كثرة صفيحات أولية (مستنسخة)، وهي اضطراب نخاعي" } }
+        ],
+        "distinguishing_information": [
+          { "code": "THROMBOCYTOSIS_DISTINGUISH_MARKERS", "text": { "en": "Inflammatory markers and ferritin help support a reactive cause.", "ar": "تساعد مؤشرات الالتهاب والفيريتين في دعم السبب التفاعلي." } },
+          { "code": "THROMBOCYTOSIS_DISTINGUISH_PERSISTENCE", "text": { "en": "Persistence of an elevated count after the reactive trigger resolves supports further evaluation.", "ar": "يدعم استمرار ارتفاع العدد بعد زوال المحفز التفاعلي إجراء مزيد من التقييم." } }
+        ],
+        "learning_points": [
+          { "code": "THROMBOCYTOSIS_LEARNING_REACTIVE_MORE_COMMON", "text": { "en": "The large majority of elevated platelet counts encountered clinically are reactive, not primary.", "ar": "الغالبية العظمى من حالات ارتفاع الصفيحات في الممارسة السريرية تفاعلية وليست أولية." } }
+        ]
+      },
+      "sources": [
+        { "source_id": "SRC_MEDLINEPLUS_PLATELET_DISORDERS", "organization": "U.S. National Library of Medicine / MedlinePlus", "title": "Platelet Disorders", "url": "https://medlineplus.gov/plateletdisorders.html" },
+        { "source_id": "SRC_MEDLINEPLUS_MPV_2024", "organization": "U.S. National Library of Medicine / MedlinePlus", "title": "MPV Blood Test", "url": "https://medlineplus.gov/lab-tests/mpv-blood-test/" }
+      ]
+    },
+    {
+      "context_group_code": "COMBINED_CYTOPENIA_CONTEXT",
+      "conclusion_codes": ["possible_combined_cytopenia_pattern", "pancytopenia_pattern"],
+      "review_status": "APPROVED",
+      "patient_friendly_meaning": {
+        "en": "The results show more than one blood cell line below the reference range at the same time (for example, red cells, white cells, and/or platelets), a pattern that generally needs careful medical review.",
+        "ar": "تُظهر النتائج انخفاضًا في أكثر من خط من خطوط خلايا الدم في الوقت نفسه (مثل الكريات الحمراء والبيضاء و/أو الصفيحات)، وهو نمط يحتاج عمومًا إلى مراجعة طبية دقيقة."
+      },
+      "clinical_relevance": {
+        "en": "When multiple cell lines drop together, this often points toward a shared underlying process affecting the bone marrow rather than an isolated single-lineage problem.",
+        "ar": "عند انخفاض عدة خطوط خلوية معًا، يشير ذلك غالبًا إلى عملية كامنة مشتركة تؤثر في نخاع العظم بدل مشكلة معزولة في خط واحد."
+      },
+      "possible_causes": [
+        { "code": "CYTOPENIA_CAUSE_MEDICATION", "label": { "en": "Medication effect", "ar": "تأثير دوائي" }, "description": { "en": "Some medications can suppress multiple cell lines.", "ar": "قد تثبط بعض الأدوية عدة خطوط خلوية." } },
+        { "code": "CYTOPENIA_CAUSE_VIRAL_INFECTION", "label": { "en": "Viral infection", "ar": "عدوى فيروسية" }, "description": { "en": "Some viral infections can affect multiple cell lines.", "ar": "قد تؤثر بعض العدوى الفيروسية في عدة خطوط خلوية." } },
+        { "code": "CYTOPENIA_CAUSE_AUTOIMMUNE", "label": { "en": "Autoimmune disease", "ar": "مرض مناعي ذاتي" }, "description": { "en": "Autoimmune conditions can affect multiple cell lines.", "ar": "قد تؤثر الحالات المناعية الذاتية في عدة خطوط خلوية." } },
+        { "code": "ANEMIA_CAUSE_BONE_MARROW_DISORDER", "label": { "en": "Bone marrow disorders", "ar": "اضطرابات نخاع العظم" }, "description": { "en": "Conditions that reduce the marrow's overall ability to produce blood cells.", "ar": "حالات تقلل من القدرة الكلية لنخاع العظم على إنتاج خلايا الدم." } },
+        { "code": "CYTOPENIA_CAUSE_NUTRITIONAL", "label": { "en": "Nutritional deficiency", "ar": "نقص غذائي" }, "description": { "en": "Severe nutritional deficiencies can affect multiple cell lines.", "ar": "قد يؤثر النقص الغذائي الشديد في عدة خطوط خلوية." } }
+      ],
+      "common_symptoms": [
+        { "code": "ANEMIA_SYMPTOM_FATIGUE", "text": { "en": "Fatigue, related to low red cells", "ar": "تعب، مرتبط بانخفاض الكريات الحمراء" } },
+        { "code": "WBC_LOW_SYMPTOM_INFECTION_RISK", "text": { "en": "Increased infection risk, related to low white cells", "ar": "زيادة خطر العدوى، مرتبطة بانخفاض الكريات البيضاء" } },
+        { "code": "THROMBOCYTOPENIA_SYMPTOM_BRUISING", "text": { "en": "Easy bruising or bleeding, related to low platelets", "ar": "كدمات أو نزيف سهل، مرتبط بانخفاض الصفيحات" } }
+      ],
+      "general_next_steps": [
+        { "code": "CYTOPENIA_NEXT_STEP_EVALUATION", "text": { "en": "Medical review is strongly recommended; this commonly involves a repeat CBC, peripheral smear, reticulocyte count, and nutritional testing (B12, folate).", "ar": "يُوصى بشدة بالمراجعة الطبية؛ وتشمل عادة تكرار تعداد الدم الكامل ولطاخة الدم المحيطية وعدّ الخلايا الشبكية وفحوصات غذائية (B12، الفولات)." } }
+      ],
+      "red_flags": [
+        { "code": "CYTOPENIA_RED_FLAG_IMPORTANT", "text": { "en": "This pattern can be clinically important and should not be ignored; timely medical evaluation is advised.", "ar": "قد يكون هذا النمط مهمًا سريريًا ولا ينبغي تجاهله؛ يُنصح بتقييم طبي في وقت مناسب." } }
+      ],
+      "student_context": {
+        "pathophysiology": {
+          "en": "Simultaneous reduction across multiple cell lines suggests a shared marrow-level process (production failure, infiltration, or a peripheral process affecting all lines) rather than an isolated single-lineage abnormality.",
+          "ar": "يشير الانخفاض المتزامن عبر عدة خطوط خلوية إلى عملية مشتركة على مستوى النخاع (فشل إنتاجي، أو ارتشاح، أو عملية محيطية تؤثر في جميع الخطوط) بدل شذوذ معزول في خط واحد."
+        },
+        "differential_considerations": [
+          { "code": "CYTOPENIA_DDX_MEDICATION", "text": { "en": "Medication or toxin effect", "ar": "تأثير دوائي أو سمّي" } },
+          { "code": "CYTOPENIA_DDX_VIRAL", "text": { "en": "Viral infection", "ar": "عدوى فيروسية" } },
+          { "code": "CYTOPENIA_DDX_AUTOIMMUNE", "text": { "en": "Autoimmune disease", "ar": "مرض مناعي ذاتي" } },
+          { "code": "CYTOPENIA_DDX_MARROW_FAILURE", "text": { "en": "Bone marrow failure or infiltrative disorder", "ar": "فشل نخاعي أو اضطراب ارتشاحي" } },
+          { "code": "CYTOPENIA_DDX_NUTRITIONAL", "text": { "en": "Severe nutritional deficiency", "ar": "نقص غذائي شديد" } }
+        ],
+        "distinguishing_information": [
+          { "code": "CYTOPENIA_DISTINGUISH_SMEAR", "text": { "en": "Peripheral smear morphology is an important early step.", "ar": "يُعد شكل الخلايا في لطاخة الدم المحيطية خطوة مبكرة مهمة." } },
+          { "code": "CYTOPENIA_DISTINGUISH_MARROW_EVAL", "text": { "en": "Bone marrow evaluation may be needed when the cause remains unclear.", "ar": "قد يُحتاج إلى تقييم نخاع العظم عندما يبقى السبب غير واضح." } },
+          { "code": "CYTOPENIA_DISTINGUISH_MEDICATION_TOXIN_HISTORY", "text": { "en": "A detailed medication and toxin exposure history is essential.", "ar": "يُعد التاريخ التفصيلي للأدوية والتعرض للسموم أساسيًا." } }
+        ],
+        "learning_points": [
+          { "code": "CYTOPENIA_LEARNING_URGENCY", "text": { "en": "Multi-lineage cytopenia carries a broader and generally more urgent differential than an isolated single-lineage abnormality.", "ar": "يحمل نقص الخلايا متعدد الخطوط تشخيصًا تفريقيًا أوسع وأكثر استعجالًا عمومًا مقارنة بشذوذ معزول في خط واحد." } }
+        ]
+      },
+      "sources": [
+        { "source_id": "SRC_MEDLINEPLUS_CBC", "organization": "U.S. National Library of Medicine / MedlinePlus", "title": "Complete Blood Count (CBC)", "url": "https://medlineplus.gov/lab-tests/complete-blood-count-cbc/" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,275 @@
+{
+  "schema_version": "1",
+  "category": "LIVER_FUNCTION",
+  "groups": [
+    {
+      "context_group_code": "HEPATOCELLULAR_INJURY_CONTEXT",
+      "conclusion_codes": ["hepatocellular_injury_pattern", "isolated_alt_elevation", "isolated_ast_elevation"],
+      "review_status": "APPROVED",
+      "patient_friendly_meaning": {
+        "en": "The results show liver enzymes (ALT and/or AST) that are elevated in a pattern more associated with liver-cell irritation or injury.",
+        "ar": "تُظهر النتائج ارتفاعًا في إنزيمات الكبد (ALT و/أو AST) بنمط يرتبط أكثر بتهيّج أو أذية خلايا الكبد."
+      },
+      "clinical_relevance": {
+        "en": "ALT and AST are released when liver cells are irritated or damaged; an elevation does not by itself identify a specific liver disease.",
+        "ar": "يُطلَق ALT وAST عند تهيّج خلايا الكبد أو تضررها؛ ولا يحدد الارتفاع وحده مرضًا كبديًا معينًا."
+      },
+      "possible_causes": [
+        { "code": "HEPATOCELLULAR_CAUSE_FATTY_LIVER", "label": { "en": "Fatty liver disease", "ar": "مرض الكبد الدهني" }, "description": { "en": "A common cause of mild-to-moderate ALT/AST elevation.", "ar": "من الأسباب الشائعة لارتفاع ALT/AST الخفيف إلى المتوسط." } },
+        { "code": "HEPATOCELLULAR_CAUSE_VIRAL_HEPATITIS", "label": { "en": "Viral hepatitis", "ar": "التهاب كبدي فيروسي" }, "description": { "en": "Hepatitis A, B, or C infection can raise liver enzymes.", "ar": "قد ترفع عدوى التهاب الكبد A أو B أو C إنزيمات الكبد." } },
+        { "code": "HEPATOCELLULAR_CAUSE_ALCOHOL", "label": { "en": "Alcohol use", "ar": "تعاطي الكحول" }, "description": { "en": "Alcohol can injure liver cells.", "ar": "قد يؤدي الكحول إلى أذية خلايا الكبد." } },
+        { "code": "HEPATOCELLULAR_CAUSE_MEDICATION", "label": { "en": "Medication or supplement effect", "ar": "تأثير دواء أو مكمّل غذائي" }, "description": { "en": "Certain medications and supplements can affect the liver.", "ar": "قد تؤثر بعض الأدوية والمكملات الغذائية في الكبد." } }
+      ],
+      "common_symptoms": [
+        { "code": "LIVER_SYMPTOM_OFTEN_NONE", "text": { "en": "Often causes no noticeable symptoms in mild cases.", "ar": "غالبًا لا تسبب الحالات الخفيفة أعراضًا ملحوظة." } },
+        { "code": "LIVER_SYMPTOM_FATIGUE", "text": { "en": "Fatigue", "ar": "تعب" } },
+        { "code": "LIVER_SYMPTOM_JAUNDICE", "text": { "en": "Yellowing of the skin or eyes (jaundice), in more pronounced cases", "ar": "اصفرار الجلد أو العينين (اليرقان)، في الحالات الأكثر وضوحًا" } },
+        { "code": "LIVER_SYMPTOM_ABDOMINAL_DISCOMFORT", "text": { "en": "Abdominal discomfort", "ar": "انزعاج في البطن" } }
+      ],
+      "general_next_steps": [
+        { "code": "LIVER_NEXT_STEP_REPEAT_MEDICATION_REVIEW", "text": { "en": "Repeat liver chemistries and a medication/supplement review are commonly used first steps.", "ar": "يُعد تكرار فحوصات الكبد ومراجعة الأدوية والمكملات الغذائية من الخطوات الأولى الشائعة." } },
+        { "code": "LIVER_NEXT_STEP_CLINICAL_ASSESSMENT", "text": { "en": "Clinical assessment together with a review of alcohol use and viral hepatitis risk helps determine the cause.", "ar": "يساعد التقييم السريري إلى جانب مراجعة تعاطي الكحول وعوامل خطر التهاب الكبد الفيروسي في تحديد السبب." } }
+      ],
+      "red_flags": [
+        { "code": "LIVER_RED_FLAG_JAUNDICE", "text": { "en": "New yellowing of the skin/eyes, dark urine, pale stools, or significant abdominal pain may warrant faster medical evaluation.", "ar": "قد يستدعي ظهور اصفرار جديد في الجلد/العينين أو بول داكن أو براز فاتح اللون أو ألم بطني ملحوظ تقييمًا طبيًا أسرع." } }
+      ],
+      "student_context": {
+        "pathophysiology": {
+          "en": "ALT and AST are intracellular hepatocyte enzymes released into the bloodstream when hepatocytes are injured or become more permeable; a pattern where ALT/AST elevation predominates over ALP after normalization to each analyte's upper limit of normal (the R ratio) supports a hepatocellular-predominant injury pattern.",
+          "ar": "إنزيما ALT وAST داخل خلايا الكبد ويُطلقان في مجرى الدم عند تضررها أو زيادة نفاذيتها؛ ويدعم النمط الذي يغلب فيه ارتفاع ALT/AST على ALP بعد التطبيع إلى الحد الأعلى الطبيعي لكل محلل (نسبة R) نمط أذية يغلب فيه العنصر الخلوي الكبدي."
+        },
+        "differential_considerations": [
+          { "code": "HEPATOCELLULAR_DDX_FATTY_LIVER", "text": { "en": "Fatty liver disease (steatotic liver disease)", "ar": "مرض الكبد الدهني" } },
+          { "code": "HEPATOCELLULAR_DDX_VIRAL", "text": { "en": "Viral hepatitis (A, B, C)", "ar": "التهاب كبدي فيروسي (A، B، C)" } },
+          { "code": "HEPATOCELLULAR_DDX_ALCOHOL", "text": { "en": "Alcohol-related liver injury", "ar": "أذية كبدية مرتبطة بالكحول" } },
+          { "code": "HEPATOCELLULAR_DDX_DRUG_INDUCED", "text": { "en": "Drug-induced liver injury", "ar": "أذية كبدية ناجمة عن الأدوية" } }
+        ],
+        "distinguishing_information": [
+          { "code": "HEPATOCELLULAR_DISTINGUISH_AST_ALT_RATIO", "text": { "en": "An AST/ALT ratio of 2 or more is an educational clue sometimes associated with alcohol-related injury, though it does not establish the cause alone.", "ar": "تُعد نسبة AST/ALT البالغة 2 أو أكثر قرينة تعليمية ترتبط أحيانًا بالأذية المرتبطة بالكحول، دون أن تثبت السبب بمفردها." } },
+          { "code": "HEPATOCELLULAR_DISTINGUISH_SEROLOGY", "text": { "en": "Viral hepatitis serologies help evaluate an infectious cause.", "ar": "تساعد فحوصات مصل التهاب الكبد الفيروسي في تقييم السبب الإنتاني." } },
+          { "code": "HEPATOCELLULAR_DISTINGUISH_IMAGING", "text": { "en": "Liver imaging can help evaluate fatty liver or structural causes.", "ar": "قد يساعد تصوير الكبد في تقييم الكبد الدهني أو الأسباب البنيوية." } }
+        ],
+        "learning_points": [
+          { "code": "HEPATOCELLULAR_LEARNING_R_RATIO", "text": { "en": "The R ratio (ALT/AST relative to ALP, each normalized to its own upper limit) is a standard educational framework for classifying liver-injury patterns as hepatocellular, cholestatic, or mixed.", "ar": "تُعد نسبة R (ALT/AST نسبة إلى ALP، بعد تطبيع كل منهما إلى حده الأعلى) إطارًا تعليميًا معتمدًا لتصنيف أنماط أذية الكبد إلى خلوية أو ركودية أو مختلطة." } }
+        ]
+      },
+      "sources": [
+        { "source_id": "SRC_ACG_LIVER_2017", "organization": "American College of Gastroenterology", "title": "ACG Clinical Guideline: Evaluation of Abnormal Liver Chemistries", "url": "https://acgcdn.gi.org/wp-content/uploads/2018/04/ACG-Abnormal-Liver-Chemistries-Guideline-Summary.pdf" },
+        { "source_id": "SRC_AASLD_LIVER_2025", "organization": "American Association for the Study of Liver Diseases", "title": "How to approach elevated liver enzymes?", "url": "https://www.aasld.org/liver-fellow-network/core-series/back-basics/how-approach-elevated-liver-enzymes" },
+        { "source_id": "SRC_MEDLINEPLUS_LIVER_DISEASES", "organization": "U.S. National Library of Medicine / MedlinePlus", "title": "Liver Diseases", "url": "https://medlineplus.gov/liverdiseases.html" }
+      ]
+    },
+    {
+      "context_group_code": "CHOLESTATIC_INJURY_CONTEXT",
+      "conclusion_codes": ["cholestatic_injury_pattern", "isolated_alp_elevation", "alp_ggt_elevation", "isolated_ggt_elevation"],
+      "review_status": "APPROVED",
+      "patient_friendly_meaning": {
+        "en": "The results show liver-related enzymes (ALP and/or GGT) elevated in a pattern more associated with bile flow (cholestatic) irritation than with liver-cell injury itself.",
+        "ar": "تُظهر النتائج ارتفاعًا في إنزيمات مرتبطة بالكبد (ALP و/أو GGT) بنمط يرتبط أكثر بتهيّج تدفق الصفراء (ركودي صفراوي) وليس بأذية خلايا الكبد ذاتها."
+      },
+      "clinical_relevance": {
+        "en": "ALP and GGT can rise when bile flow is impaired; GGT helps confirm that an ALP elevation is more likely liver/bile related rather than from bone.",
+        "ar": "قد يرتفع ALP وGGT عند اضطراب تدفق الصفراء؛ ويساعد GGT في تأكيد أن ارتفاع ALP مرتبط بشكل أكبر بالكبد/الصفراء وليس بالعظم."
+      },
+      "possible_causes": [
+        { "code": "CHOLESTATIC_CAUSE_BILE_DUCT", "label": { "en": "Bile duct problems", "ar": "مشكلات في القناة الصفراوية" }, "description": { "en": "Blockage or irritation of the bile ducts.", "ar": "انسداد أو تهيّج في القنوات الصفراوية." } },
+        { "code": "CHOLESTATIC_CAUSE_MEDICATION", "label": { "en": "Medication effect", "ar": "تأثير دوائي" }, "description": { "en": "Some medications can affect bile flow.", "ar": "قد تؤثر بعض الأدوية في تدفق الصفراء." } },
+        { "code": "CHOLESTATIC_CAUSE_ALCOHOL", "label": { "en": "Alcohol use", "ar": "تعاطي الكحول" }, "description": { "en": "Alcohol can raise GGT specifically.", "ar": "قد يرفع الكحول GGT بشكل خاص." } },
+        { "code": "CHOLESTATIC_CAUSE_GALLSTONES", "label": { "en": "Gallstones", "ar": "حصى المرارة" }, "description": { "en": "Gallstones can obstruct bile flow.", "ar": "قد تسبب حصى المرارة انسدادًا في تدفق الصفراء." } }
+      ],
+      "common_symptoms": [
+        { "code": "LIVER_SYMPTOM_OFTEN_NONE", "text": { "en": "Often causes no noticeable symptoms in mild cases.", "ar": "غالبًا لا تسبب الحالات الخفيفة أعراضًا ملحوظة." } },
+        { "code": "CHOLESTATIC_SYMPTOM_ITCHING", "text": { "en": "Itching (pruritus)", "ar": "حكة جلدية" } },
+        { "code": "LIVER_SYMPTOM_JAUNDICE", "text": { "en": "Yellowing of the skin or eyes (jaundice), in more pronounced cases", "ar": "اصفرار الجلد أو العينين (اليرقان)، في الحالات الأكثر وضوحًا" } },
+        { "code": "CHOLESTATIC_SYMPTOM_DARK_URINE", "text": { "en": "Dark urine or pale stools", "ar": "بول داكن أو براز فاتح اللون" } }
+      ],
+      "general_next_steps": [
+        { "code": "LIVER_NEXT_STEP_REPEAT_MEDICATION_REVIEW", "text": { "en": "Repeat liver chemistries and a medication review are commonly used first steps.", "ar": "يُعد تكرار فحوصات الكبد ومراجعة الأدوية من الخطوات الأولى الشائعة." } },
+        { "code": "CHOLESTATIC_NEXT_STEP_IMAGING", "text": { "en": "Imaging of the bile ducts/gallbladder may be considered if this pattern persists.", "ar": "قد يُنظر في تصوير القنوات الصفراوية/المرارة إذا استمر هذا النمط." } }
+      ],
+      "red_flags": [
+        { "code": "LIVER_RED_FLAG_JAUNDICE", "text": { "en": "New yellowing of the skin/eyes, dark urine, pale stools, or significant abdominal pain may warrant faster medical evaluation.", "ar": "قد يستدعي ظهور اصفرار جديد في الجلد/العينين أو بول داكن أو براز فاتح اللون أو ألم بطني ملحوظ تقييمًا طبيًا أسرع." } }
+      ],
+      "student_context": {
+        "pathophysiology": {
+          "en": "ALP is produced in liver, bone, and other tissues; a concurrent GGT elevation supports a hepatobiliary rather than bony source. A pattern where ALP/GGT elevation predominates over ALT/AST after normalization (a low R ratio) supports a cholestatic-predominant injury pattern.",
+          "ar": "يُنتج ALP في الكبد والعظم وأنسجة أخرى؛ ويدعم ارتفاع GGT المرافق مصدرًا كبديًا صفراويًا وليس عظميًا. ويدعم النمط الذي يغلب فيه ارتفاع ALP/GGT على ALT/AST بعد التطبيع (انخفاض نسبة R) نمط أذية يغلب فيه العنصر الركودي."
+        },
+        "differential_considerations": [
+          { "code": "CHOLESTATIC_DDX_BILIARY_OBSTRUCTION", "text": { "en": "Biliary obstruction (e.g. gallstones)", "ar": "انسداد صفراوي (مثل حصى المرارة)" } },
+          { "code": "CHOLESTATIC_DDX_MEDICATION", "text": { "en": "Medication-induced cholestasis", "ar": "ركود صفراوي ناجم عن الأدوية" } },
+          { "code": "CHOLESTATIC_DDX_PRIMARY_BILIARY", "text": { "en": "Primary biliary or autoimmune cholestatic disease (less common)", "ar": "مرض صفراوي أولي أو ركود صفراوي مناعي ذاتي (أقل شيوعًا)" } }
+        ],
+        "distinguishing_information": [
+          { "code": "CHOLESTATIC_DISTINGUISH_GGT_ORIGIN", "text": { "en": "GGT helps confirm a hepatobiliary origin when ALP alone is elevated without a high GGT, hepatic origin cannot be assumed.", "ar": "يساعد GGT في تأكيد المنشأ الكبدي الصفراوي؛ فعند ارتفاع ALP وحده دون GGT مرتفع، لا يمكن افتراض المنشأ الكبدي." } },
+          { "code": "CHOLESTATIC_DISTINGUISH_IMAGING", "text": { "en": "Imaging of the biliary tree helps distinguish obstructive from non-obstructive causes.", "ar": "يساعد تصوير الشجرة الصفراوية في التمييز بين الأسباب الانسدادية وغير الانسدادية." } }
+        ],
+        "learning_points": [
+          { "code": "CHOLESTATIC_LEARNING_ISOLATED_ALP", "text": { "en": "Isolated ALP elevation is not automatically hepatic in origin; GGT and clinical context help clarify the source.", "ar": "لا يُنسب ارتفاع ALP المعزول تلقائيًا إلى الكبد؛ ويساعد GGT والسياق السريري في توضيح المصدر." } }
+        ]
+      },
+      "sources": [
+        { "source_id": "SRC_ACG_LIVER_2017", "organization": "American College of Gastroenterology", "title": "ACG Clinical Guideline: Evaluation of Abnormal Liver Chemistries", "url": "https://acgcdn.gi.org/wp-content/uploads/2018/04/ACG-Abnormal-Liver-Chemistries-Guideline-Summary.pdf" },
+        { "source_id": "SRC_MEDLINEPLUS_GGT_2025", "organization": "U.S. National Library of Medicine / MedlinePlus", "title": "Gamma-glutamyl transferase (GGT) blood test", "url": "https://medlineplus.gov/ency/article/003458.htm" }
+      ]
+    },
+    {
+      "context_group_code": "MIXED_LIVER_INJURY_CONTEXT",
+      "conclusion_codes": ["mixed_liver_injury_pattern"],
+      "review_status": "APPROVED",
+      "patient_friendly_meaning": {
+        "en": "The results show a pattern where both liver-cell-related (ALT/AST) and bile-flow-related (ALP) enzymes are elevated together, a pattern called mixed liver injury.",
+        "ar": "تُظهر النتائج نمطًا يرتفع فيه معًا كل من الإنزيمات المرتبطة بخلايا الكبد (ALT/AST) والمرتبطة بتدفق الصفراء (ALP)، وهو ما يُعرف بالأذية الكبدية المختلطة."
+      },
+      "clinical_relevance": {
+        "en": "A mixed pattern means both hepatocellular and cholestatic signals are present, which can happen with several different conditions.",
+        "ar": "يعني النمط المختلط وجود إشارتين معًا، خلوية وركودية، وقد يحدث ذلك مع عدة حالات مختلفة."
+      },
+      "possible_causes": [
+        { "code": "HEPATOCELLULAR_CAUSE_VIRAL_HEPATITIS", "label": { "en": "Viral hepatitis", "ar": "التهاب كبدي فيروسي" }, "description": { "en": "Some viral hepatitis presentations show a mixed pattern.", "ar": "قد تظهر بعض حالات التهاب الكبد الفيروسي نمطًا مختلطًا." } },
+        { "code": "CHOLESTATIC_CAUSE_MEDICATION", "label": { "en": "Medication effect", "ar": "تأثير دوائي" }, "description": { "en": "Certain medications can produce a mixed injury pattern.", "ar": "قد تُنتج بعض الأدوية نمط أذية مختلطًا." } },
+        { "code": "HEPATOCELLULAR_CAUSE_FATTY_LIVER", "label": { "en": "Fatty liver disease", "ar": "مرض الكبد الدهني" }, "description": { "en": "Can sometimes present with a mixed pattern.", "ar": "قد يظهر أحيانًا بنمط مختلط." } }
+      ],
+      "common_symptoms": [
+        { "code": "LIVER_SYMPTOM_OFTEN_NONE", "text": { "en": "Often causes no noticeable symptoms in mild cases.", "ar": "غالبًا لا تسبب الحالات الخفيفة أعراضًا ملحوظة." } },
+        { "code": "LIVER_SYMPTOM_FATIGUE", "text": { "en": "Fatigue", "ar": "تعب" } },
+        { "code": "LIVER_SYMPTOM_JAUNDICE", "text": { "en": "Yellowing of the skin or eyes (jaundice), in more pronounced cases", "ar": "اصفرار الجلد أو العينين (اليرقان)، في الحالات الأكثر وضوحًا" } }
+      ],
+      "general_next_steps": [
+        { "code": "LIVER_NEXT_STEP_REPEAT_MEDICATION_REVIEW", "text": { "en": "Repeat liver chemistries and a medication review are commonly used first steps.", "ar": "يُعد تكرار فحوصات الكبد ومراجعة الأدوية من الخطوات الأولى الشائعة." } },
+        { "code": "LIVER_NEXT_STEP_CLINICAL_ASSESSMENT", "text": { "en": "Clinical assessment together with imaging may help determine the underlying cause.", "ar": "قد يساعد التقييم السريري إلى جانب التصوير في تحديد السبب الكامن." } }
+      ],
+      "red_flags": [
+        { "code": "LIVER_RED_FLAG_JAUNDICE", "text": { "en": "New yellowing of the skin/eyes, dark urine, pale stools, or significant abdominal pain may warrant faster medical evaluation.", "ar": "قد يستدعي ظهور اصفرار جديد في الجلد/العينين أو بول داكن أو براز فاتح اللون أو ألم بطني ملحوظ تقييمًا طبيًا أسرع." } }
+      ],
+      "student_context": {
+        "pathophysiology": {
+          "en": "When the R ratio (ALT/AST relative to ALP, each normalized to its own upper limit of normal) falls between roughly 2 and 5, both hepatocellular and cholestatic signals are present, indicating a mixed injury pattern.",
+          "ar": "عندما تقع نسبة R (ALT/AST نسبة إلى ALP، بعد تطبيع كل منهما إلى حده الأعلى الطبيعي) بين نحو 2 و5، تكون الإشارتان الخلوية والركودية حاضرتين معًا، مما يدل على نمط أذية مختلط."
+        },
+        "differential_considerations": [
+          { "code": "MIXED_DDX_VIRAL", "text": { "en": "Viral hepatitis", "ar": "التهاب كبدي فيروسي" } },
+          { "code": "MIXED_DDX_MEDICATION", "text": { "en": "Drug-induced liver injury", "ar": "أذية كبدية ناجمة عن الأدوية" } },
+          { "code": "MIXED_DDX_FATTY_LIVER", "text": { "en": "Fatty liver disease", "ar": "مرض الكبد الدهني" } }
+        ],
+        "distinguishing_information": [
+          { "code": "MIXED_DISTINGUISH_R_RATIO_TREND", "text": { "en": "Following the R ratio over time and repeat testing can clarify whether one component predominates.", "ar": "قد يساعد تتبع نسبة R مع الوقت وتكرار الفحص في توضيح أي عنصر هو الغالب." } },
+          { "code": "MIXED_DISTINGUISH_SEROLOGY_MEDICATION", "text": { "en": "Viral serologies and a detailed medication history help narrow the cause.", "ar": "تساعد فحوصات مصل الفيروسات والتاريخ الدوائي التفصيلي في تضييق السبب." } }
+        ],
+        "learning_points": [
+          { "code": "MIXED_LEARNING_R_RATIO_FRAMEWORK", "text": { "en": "The R-ratio framework (hepatocellular >5, cholestatic <2, mixed 2-5) is an educational classification, not a diagnosis on its own.", "ar": "يُعد إطار نسبة R (خلوي أكبر من 5، ركودي أقل من 2، مختلط بين 2 و5) تصنيفًا تعليميًا وليس تشخيصًا بحد ذاته." } }
+        ]
+      },
+      "sources": [
+        { "source_id": "SRC_ACG_LIVER_2017", "organization": "American College of Gastroenterology", "title": "ACG Clinical Guideline: Evaluation of Abnormal Liver Chemistries", "url": "https://acgcdn.gi.org/wp-content/uploads/2018/04/ACG-Abnormal-Liver-Chemistries-Guideline-Summary.pdf" }
+      ]
+    },
+    {
+      "context_group_code": "BILIRUBIN_ELEVATION_CONTEXT",
+      "conclusion_codes": ["isolated_bilirubin_elevation", "direct_bilirubin_predominance", "indirect_bilirubin_predominance"],
+      "review_status": "APPROVED",
+      "patient_friendly_meaning": {
+        "en": "The results show bilirubin above the reference range while other liver values are within their supplied ranges, a pattern that can be associated with jaundice.",
+        "ar": "تُظهر النتائج ارتفاعًا في البيليروبين عن المجال المرجعي بينما تبقى قيم الكبد الأخرى ضمن مجالاتها، وهو نمط قد يرتبط باليرقان."
+      },
+      "clinical_relevance": {
+        "en": "Bilirubin is a breakdown product of red blood cells that is normally processed by the liver; an elevation can reflect increased production, a processing issue, or a drainage/bile-flow issue.",
+        "ar": "البيليروبين ناتج عن تكسّر الكريات الحمراء ويُعالَج طبيعيًا في الكبد؛ وقد يعكس ارتفاعه زيادة الإنتاج أو مشكلة في المعالجة أو مشكلة في التصريف/تدفق الصفراء."
+      },
+      "possible_causes": [
+        { "code": "BILIRUBIN_CAUSE_HEMOLYSIS", "label": { "en": "Increased red-cell breakdown (hemolysis)", "ar": "زيادة تكسّر الكريات الحمراء (انحلال دموي)" }, "description": { "en": "More common with an indirect (unconjugated) predominance.", "ar": "أكثر شيوعًا مع غلبة البيليروبين غير المباشر." } },
+        { "code": "BILIRUBIN_CAUSE_GILBERT", "label": { "en": "A common, generally benign inherited variation in bilirubin processing (Gilbert syndrome)", "ar": "تغيّر وراثي شائع وحميد عمومًا في معالجة البيليروبين (متلازمة جيلبرت)" }, "description": { "en": "A frequent, usually harmless cause of mild indirect bilirubin elevation.", "ar": "سبب شائع وغير ضار عادة لارتفاع خفيف في البيليروبين غير المباشر." } },
+        { "code": "BILIRUBIN_CAUSE_BILE_FLOW", "label": { "en": "Bile-flow problem", "ar": "مشكلة في تدفق الصفراء" }, "description": { "en": "More common with a direct (conjugated) predominance.", "ar": "أكثر شيوعًا مع غلبة البيليروبين المباشر." } },
+        { "code": "HEPATOCELLULAR_CAUSE_VIRAL_HEPATITIS", "label": { "en": "Liver-cell irritation or injury", "ar": "تهيّج أو أذية خلايا الكبد" }, "description": { "en": "Liver injury can raise bilirubin as part of a broader pattern.", "ar": "قد تؤدي أذية الكبد إلى ارتفاع البيليروبين ضمن نمط أوسع." } }
+      ],
+      "common_symptoms": [
+        { "code": "LIVER_SYMPTOM_JAUNDICE", "text": { "en": "Yellowing of the skin or eyes (jaundice)", "ar": "اصفرار الجلد أو العينين (اليرقان)" } },
+        { "code": "CHOLESTATIC_SYMPTOM_DARK_URINE", "text": { "en": "Dark urine or pale stools, more associated with a bile-flow cause", "ar": "بول داكن أو براز فاتح اللون، ويرتبط أكثر بسبب متعلق بتدفق الصفراء" } },
+        { "code": "LIVER_SYMPTOM_OFTEN_NONE", "text": { "en": "Mild elevations, especially from benign inherited variation, often cause no symptoms.", "ar": "غالبًا لا تسبب الارتفاعات الخفيفة، خاصة الناتجة عن تغيّر وراثي حميد، أي أعراض." } }
+      ],
+      "general_next_steps": [
+        { "code": "BILIRUBIN_NEXT_STEP_FRACTIONATION", "text": { "en": "Checking direct and indirect bilirubin fractions together, when available in compatible units, helps guide interpretation.", "ar": "يساعد فحص كسور البيليروبين المباشر وغير المباشر معًا، عند توفرهما بوحدات متوافقة، في توجيه التفسير." } },
+        { "code": "LIVER_NEXT_STEP_CLINICAL_ASSESSMENT", "text": { "en": "Clinical assessment and a review of other liver values help clarify the cause.", "ar": "يساعد التقييم السريري ومراجعة قيم الكبد الأخرى في توضيح السبب." } }
+      ],
+      "red_flags": [
+        { "code": "LIVER_RED_FLAG_JAUNDICE", "text": { "en": "New yellowing of the skin/eyes, dark urine, pale stools, or significant abdominal pain may warrant faster medical evaluation.", "ar": "قد يستدعي ظهور اصفرار جديد في الجلد/العينين أو بول داكن أو براز فاتح اللون أو ألم بطني ملحوظ تقييمًا طبيًا أسرع." } }
+      ],
+      "student_context": {
+        "pathophysiology": {
+          "en": "Unconjugated (indirect) bilirubin reflects pre-hepatic production (e.g. hemolysis) or reduced hepatic conjugation capacity; conjugated (direct) bilirubin reflects a hepatic or post-hepatic (biliary) processing/drainage problem.",
+          "ar": "يعكس البيليروبين غير المرتبط (غير المباشر) إنتاجًا قبل كبدي (مثل الانحلال الدموي) أو انخفاض قدرة الكبد على الارتباط؛ بينما يعكس البيليروبين المرتبط (المباشر) مشكلة كبدية أو ما بعد كبدية (صفراوية) في المعالجة/التصريف."
+        },
+        "differential_considerations": [
+          { "code": "BILIRUBIN_DDX_HEMOLYSIS", "text": { "en": "Hemolysis (indirect predominance)", "ar": "انحلال دموي (غلبة غير مباشرة)" } },
+          { "code": "BILIRUBIN_DDX_GILBERT", "text": { "en": "Gilbert syndrome (indirect predominance, generally benign)", "ar": "متلازمة جيلبرت (غلبة غير مباشرة، حميدة عمومًا)" } },
+          { "code": "BILIRUBIN_DDX_BILIARY_OBSTRUCTION", "text": { "en": "Biliary obstruction (direct predominance)", "ar": "انسداد صفراوي (غلبة مباشرة)" } },
+          { "code": "BILIRUBIN_DDX_HEPATOCELLULAR", "text": { "en": "Hepatocellular injury contributing to bilirubin elevation", "ar": "أذية خلوية كبدية مساهمة في ارتفاع البيليروبين" } }
+        ],
+        "distinguishing_information": [
+          { "code": "BILIRUBIN_DISTINGUISH_FRACTIONS", "text": { "en": "Direct-versus-indirect fractionation is reported only when both are available in compatible units, and is the key first distinguishing step.", "ar": "يُذكر تقسيم المباشر مقابل غير المباشر فقط عند توفر كلا القيمتين بوحدات متوافقة، ويُعد الخطوة الأولى الأساسية للتمييز." } },
+          { "code": "BILIRUBIN_DISTINGUISH_OTHER_LIVER_VALUES", "text": { "en": "Whether ALT/AST/ALP are otherwise within range supports an isolated bilirubin process.", "ar": "يدعم بقاء ALT/AST/ALP ضمن مجالاتها وجود عملية بيليروبين معزولة." } }
+        ],
+        "learning_points": [
+          { "code": "BILIRUBIN_LEARNING_ISOLATED_PATTERN", "text": { "en": "High bilirubin with otherwise-normal ALT/AST/ALP is an isolated elevation pattern with its own distinct differential from combined injury patterns.", "ar": "يُعد ارتفاع البيليروبين مع بقاء ALT/AST/ALP طبيعية نمط ارتفاع معزول له تشخيص تفريقي مختلف عن أنماط الأذية المشتركة." } }
+        ]
+      },
+      "sources": [
+        { "source_id": "SRC_MEDLINEPLUS_BILIRUBIN_2025", "organization": "U.S. National Library of Medicine / MedlinePlus", "title": "Bilirubin blood test", "url": "https://medlineplus.gov/ency/article/003479.htm" },
+        { "source_id": "SRC_AASLD_LIVER_2025", "organization": "American Association for the Study of Liver Diseases", "title": "How to approach elevated liver enzymes?", "url": "https://www.aasld.org/liver-fellow-network/core-series/back-basics/how-approach-elevated-liver-enzymes" }
+      ]
+    },
+    {
+      "context_group_code": "IMPAIRED_SYNTHETIC_FUNCTION_CONTEXT",
+      "conclusion_codes": ["possible_impaired_synthetic_function"],
+      "review_status": "APPROVED",
+      "patient_friendly_meaning": {
+        "en": "The results show a marker the liver normally produces (such as albumin or the clotting-related INR) outside its usual range, which can relate to how well the liver is making certain proteins.",
+        "ar": "تُظهر النتائج مؤشرًا ينتجه الكبد عادة (مثل الألبومين أو INR المرتبط بالتخثر) خارج مجاله المعتاد، وقد يرتبط ذلك بمدى قدرة الكبد على إنتاج بعض البروتينات."
+      },
+      "clinical_relevance": {
+        "en": "Albumin and INR reflect the liver's protein-synthesis and clotting-factor production; an abnormal value can signal impaired synthetic function but has important non-hepatic causes too.",
+        "ar": "يعكس الألبومين وINR قدرة الكبد على تصنيع البروتينات وعوامل التخثر؛ وقد تشير القيمة غير الطبيعية إلى ضعف وظيفي تصنيعي، لكن لها أيضًا أسبابًا غير كبدية مهمة."
+      },
+      "possible_causes": [
+        { "code": "SYNTHETIC_CAUSE_LIVER_DISEASE", "label": { "en": "Underlying liver disease", "ar": "مرض كبدي كامن" }, "description": { "en": "Significant liver disease can impair protein and clotting-factor production.", "ar": "قد يضعف المرض الكبدي الملحوظ إنتاج البروتينات وعوامل التخثر." } },
+        { "code": "SYNTHETIC_CAUSE_NUTRITIONAL", "label": { "en": "Nutritional status", "ar": "الحالة الغذائية" }, "description": { "en": "Nutrition can affect albumin levels.", "ar": "قد تؤثر التغذية في مستويات الألبومين." } },
+        { "code": "SYNTHETIC_CAUSE_MEDICATION", "label": { "en": "Certain medications (affecting INR)", "ar": "بعض الأدوية (تؤثر في INR)" }, "description": { "en": "Blood-thinning medications commonly affect INR.", "ar": "تؤثر أدوية سيولة الدم عادةً في INR." } },
+        { "code": "SYNTHETIC_CAUSE_OTHER_ILLNESS", "label": { "en": "Other acute or chronic illness", "ar": "مرض حاد أو مزمن آخر" }, "description": { "en": "Many non-liver conditions can also affect these markers.", "ar": "قد تؤثر حالات أخرى غير كبدية أيضًا في هذه المؤشرات." } }
+      ],
+      "common_symptoms": [
+        { "code": "LIVER_SYMPTOM_OFTEN_NONE", "text": { "en": "Often causes no noticeable symptoms in mild cases.", "ar": "غالبًا لا تسبب الحالات الخفيفة أعراضًا ملحوظة." } },
+        { "code": "SYNTHETIC_SYMPTOM_SWELLING", "text": { "en": "Swelling of the legs or abdomen, in more pronounced cases related to low albumin", "ar": "تورم في الساقين أو البطن، في الحالات الأكثر وضوحًا المرتبطة بانخفاض الألبومين" } },
+        { "code": "SYNTHETIC_SYMPTOM_BRUISING", "text": { "en": "Easy bruising or bleeding, more related to an elevated INR", "ar": "كدمات أو نزيف سهل، ويرتبط أكثر بارتفاع INR" } }
+      ],
+      "general_next_steps": [
+        { "code": "SYNTHETIC_NEXT_STEP_ASSESS_NON_HEPATIC", "text": { "en": "Considering non-hepatic causes and medication effects, alongside a broader liver evaluation, is a commonly recommended next step.", "ar": "يُوصى غالبًا بمراعاة الأسباب غير الكبدية وتأثيرات الأدوية إلى جانب تقييم كبدي أوسع كخطوة تالية." } },
+        { "code": "LIVER_NEXT_STEP_CLINICAL_ASSESSMENT", "text": { "en": "Clinical assessment by a healthcare professional is recommended to interpret this finding in context.", "ar": "يُوصى بتقييم من مختص طبي لتفسير هذه النتيجة ضمن سياقها." } }
+      ],
+      "red_flags": [],
+      "student_context": {
+        "pathophysiology": {
+          "en": "Albumin and clotting factors are synthesized by the liver; low albumin or a prolonged INR can reflect reduced synthetic capacity, though each marker has significant non-hepatic causes and confounders.",
+          "ar": "يُصنَّع الألبومين وعوامل التخثر في الكبد؛ وقد يعكس انخفاض الألبومين أو تطاول INR انخفاض القدرة التصنيعية، رغم أن لكل مؤشر أسبابًا غير كبدية ومحدِّدات مهمة."
+        },
+        "differential_considerations": [
+          { "code": "SYNTHETIC_DDX_CHRONIC_LIVER_DISEASE", "text": { "en": "Chronic liver disease", "ar": "مرض كبدي مزمن" } },
+          { "code": "SYNTHETIC_DDX_NUTRITIONAL", "text": { "en": "Nutritional/protein status", "ar": "الحالة الغذائية/البروتينية" } },
+          { "code": "SYNTHETIC_DDX_ANTICOAGULANT", "text": { "en": "Anticoagulant medication effect on INR", "ar": "تأثير دواء مضاد للتخثر في INR" } },
+          { "code": "SYNTHETIC_DDX_ACUTE_ILLNESS", "text": { "en": "Acute illness or inflammatory state", "ar": "مرض حاد أو حالة التهابية" } }
+        ],
+        "distinguishing_information": [
+          { "code": "SYNTHETIC_DISTINGUISH_MEDICATION_METHOD", "text": { "en": "Anticoagulant use, testing method, and non-hepatic clinical context must be reviewed before attributing an abnormal INR to the liver.", "ar": "يجب مراجعة استخدام مضادات التخثر وطريقة الفحص والسياق السريري غير الكبدي قبل إسناد اضطراب INR إلى الكبد." } },
+          { "code": "SYNTHETIC_DISTINGUISH_COMBINED_MARKERS", "text": { "en": "Combined evaluation of albumin and INR together strengthens (but does not confirm) a synthetic-function signal.", "ar": "يعزز التقييم المشترك للألبومين وINR معًا (دون أن يؤكد) إشارة الوظيفة التصنيعية." } }
+        ],
+        "learning_points": [
+          { "code": "SYNTHETIC_LEARNING_NON_SPECIFIC", "text": { "en": "Synthetic-function markers are non-specific and must always be interpreted alongside injury markers and clinical context, never in isolation.", "ar": "تُعد مؤشرات الوظيفة التصنيعية غير نوعية، ويجب دائمًا تفسيرها إلى جانب مؤشرات الأذية والسياق السريري، وليس بمعزل عنها." } }
+        ]
+      },
+      "sources": [
+        { "source_id": "SRC_MEDLINEPLUS_CMP_2025", "organization": "U.S. National Library of Medicine / MedlinePlus", "title": "Comprehensive metabolic panel", "url": "https://medlineplus.gov/ency/article/003468.htm" },
+        { "source_id": "SRC_MEDLINEPLUS_PT_2025", "organization": "U.S. National Library of Medicine / MedlinePlus", "title": "Prothrombin time (PT)", "url": "https://medlineplus.gov/ency/article/003652.htm" },
+        { "source_id": "SRC_AASLD_LIVER_2025", "organization": "American Association for the Study of Liver Diseases", "title": "How to approach elevated liver enzymes?", "url": "https://www.aasld.org/liver-fellow-network/core-series/back-basics/how-approach-elevated-liver-enzymes" }
+      ]
+    }
+  ]
+}
